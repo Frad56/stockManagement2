@@ -1,0 +1,9 @@
+<p>place-create works!</p>
+<form [formGroup]="placeForm" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input id="name" formControlName="name" />
+
+  <label for="location">Location:</label>
+  <input id="location" formControlName="location" />
+
+  <button type="submit">Create Place</button>

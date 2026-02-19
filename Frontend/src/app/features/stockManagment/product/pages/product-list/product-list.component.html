@@ -1,0 +1,21 @@
+<p>product-list works!</p>
+<h1>product-list</h1>
+<ul>
+    <li *ngFor="let product of products$ |async">
+        product_id:
+    {{product.product_id}}
+        name:
+    {{product.name}}
+        code: 
+    {{product.code}}
+        category_id:
+    {{product.category_id}}
+        unity_price:
+    {{product.unity_price}}
+        place_id:
+    {{product.place_id}}
+        stock_id:
+    {{product.stock_id}}
+
+</li>
+</ul>

@@ -1,0 +1,23 @@
+<p>product-edit works!</p>
+<p>product-create works!</p>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+  <label for="code">Code:</label>
+  <input id="code" formControlName="code" />
+
+  <label for="name">Name:</label>
+  <input id="name" formControlName="name" />
+ 
+  <label for="unity_price">Unity Price:</label>
+  <input id="unity_price" formControlName="unity_price" />
+
+  <label for="category_id">Category ID:</label>
+  <input id="category_id" formControlName="category_id" />
+
+  <label for="place_id">Place ID:</label>
+  <input id="place_id" formControlName="place_id" />
+
+  <label for="stock_id">Stock ID:</label>
+  <input id="stock_id" formControlName="stock_id" />
+
+  <button type="submit">Create Product</button>

@@ -1,0 +1,8 @@
+<p>stock-list works!</p>
+<h1>stock-list</h1>
+<ul>
+    <li *ngFor="let stock of stocks$ | async">
+       id:  {{stock.id}}, name:  {{stock.name}}, quantity :{{stock.quantity}}
+
+    </li>
+</ul>
