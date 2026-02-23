@@ -1,0 +1,53 @@
+<div class="login-container">
+
+  <h2>Connexion</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="login()">
+
+    <!-- USERNAME -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input 
+        id="username"
+        type="text"
+        formControlName="username"
+        placeholder="Entrer votre username"
+      />
+      <small class="error" *ngIf="userForm.get('username')?.touched && userForm.get('username')?.invalid">
+        Username obligatoire
+      </small>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Entrer votre mot de passe"
+      />
+      <small class="error" *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid">
+        Password obligatoire (minimum 4 caractères)
+      </small>
+    </div>
+
+    <!-- ERROR MESSAGE FROM BACKEND -->
+    <div class="server-error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <!-- SUBMIT BUTTON -->
+    <button type="submit" [disabled]="userForm.invalid">
+      Se connecter
+    </button>
+
+  </form>
+
+  <!-- REGISTER LINK -->
+  <p class="register-link">
+    Pas de compte ?
+    <a routerLink="/register">Créer un compte</a>
+  </p>
+
+</div>

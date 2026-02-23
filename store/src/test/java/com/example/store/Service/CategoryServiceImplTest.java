@@ -1,8 +1,9 @@
 package com.example.store.Service;
 
 import com.example.store.Exception.ElementNotFoundException;
-import com.example.store.Model.Category;
-import com.example.store.Repository.CategoryRepository;
+import com.example.store.Model.StockMangement.Category;
+import com.example.store.Repository.StockManagment.CategoryRepository;
+import com.example.store.Service.stockManagment.CategoryServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,7 +24,7 @@ class CategoryServiceImplTest {
     private CategoryRepository categoryRepository;
 
     @InjectMocks
-    private  CategoryServiceImpl categoryService;
+    private CategoryServiceImpl categoryService;
 
     @Test
     void fetchCategoryList() {

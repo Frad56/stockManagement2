@@ -1,7 +1,8 @@
 package com.example.store.Controller;
 
-import com.example.store.Model.Category;
-import com.example.store.Service.CategoryService;
+import com.example.store.Controller.stockMangment.CategoryController;
+import com.example.store.Model.StockMangement.Category;
+import com.example.store.Service.stockManagment.CategoryService;
 import static org.hamcrest.Matchers.is;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

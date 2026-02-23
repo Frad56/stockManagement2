@@ -2,7 +2,8 @@ package com.example.store.Repository;
 
 
 
-import com.example.store.Model.Stock;
+import com.example.store.Model.StockMangement.Stock;
+import com.example.store.Repository.StockManagment.StockRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

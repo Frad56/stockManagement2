@@ -1,8 +1,9 @@
 package com.example.store.Service;
 
 import com.example.store.Exception.ElementNotFoundException;
-import com.example.store.Model.Stock;
-import com.example.store.Repository.StockRepository;
+import com.example.store.Model.StockMangement.Stock;
+import com.example.store.Repository.StockManagment.StockRepository;
+import com.example.store.Service.stockManagment.StockServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

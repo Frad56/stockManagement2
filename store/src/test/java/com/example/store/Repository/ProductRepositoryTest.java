@@ -1,10 +1,14 @@
 package com.example.store.Repository;
 
 
-import com.example.store.Model.Category;
-import com.example.store.Model.Place;
-import com.example.store.Model.Product;
-import com.example.store.Model.Stock;
+import com.example.store.Model.StockMangement.Category;
+import com.example.store.Model.StockMangement.Place;
+import com.example.store.Model.StockMangement.Product;
+import com.example.store.Model.StockMangement.Stock;
+import com.example.store.Repository.StockManagment.CategoryRepository;
+import com.example.store.Repository.StockManagment.PlaceRepository;
+import com.example.store.Repository.StockManagment.ProductRepository;
+import com.example.store.Repository.StockManagment.StockRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -20,16 +24,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ProductRepositoryTest {
 
     @Autowired
-    private  ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Autowired
-    private  StockRepository stockRepository;
+    private StockRepository stockRepository;
 
     @Autowired
-    private  PlaceRepository placeRepository;
+    private PlaceRepository placeRepository;
 
     @Test
     void ProductRepository_ReturnSavedProduct(){

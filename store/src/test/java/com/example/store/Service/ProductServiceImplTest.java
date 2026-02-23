@@ -1,11 +1,12 @@
 package com.example.store.Service;
 
 import com.example.store.Exception.ElementNotFoundException;
-import com.example.store.Model.Product;
-import com.example.store.Repository.CategoryRepository;
-import com.example.store.Repository.PlaceRepository;
-import com.example.store.Repository.ProductRepository;
-import com.example.store.Repository.StockRepository;
+import com.example.store.Model.StockMangement.Product;
+import com.example.store.Repository.StockManagment.CategoryRepository;
+import com.example.store.Repository.StockManagment.PlaceRepository;
+import com.example.store.Repository.StockManagment.ProductRepository;
+import com.example.store.Repository.StockManagment.StockRepository;
+import com.example.store.Service.stockManagment.ProductServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

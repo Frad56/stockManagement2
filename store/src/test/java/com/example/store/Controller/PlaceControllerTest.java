@@ -1,7 +1,8 @@
 package com.example.store.Controller;
 
-import com.example.store.Model.Place;
-import com.example.store.Service.PlaceService;
+import com.example.store.Controller.stockMangment.PlaceController;
+import com.example.store.Model.StockMangement.Place;
+import com.example.store.Service.stockManagment.PlaceService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,9 @@
 package com.example.store.Service;
 
 import com.example.store.Exception.ElementNotFoundException;
-import com.example.store.Model.Place;
-import com.example.store.Repository.PlaceRepository;
+import com.example.store.Model.StockMangement.Place;
+import com.example.store.Repository.StockManagment.PlaceRepository;
+import com.example.store.Service.stockManagment.PlaceServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,7 +12,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;

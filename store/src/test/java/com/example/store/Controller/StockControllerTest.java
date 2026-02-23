@@ -1,7 +1,8 @@
 package com.example.store.Controller;
 
-import com.example.store.Model.Stock;
-import com.example.store.Service.StockService;
+import com.example.store.Controller.stockMangment.StockController;
+import com.example.store.Model.StockMangement.Stock;
+import com.example.store.Service.stockManagment.StockService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ import java.util.List;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.willDoNothing;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

@@ -1,11 +1,15 @@
 package com.example.store.Controller;
 
-import com.example.store.DTO.ProductDTO;
-import com.example.store.Model.Category;
-import com.example.store.Model.Place;
-import com.example.store.Model.Product;
-import com.example.store.Model.Stock;
-import com.example.store.Service.*;
+import com.example.store.Controller.stockMangment.ProductController;
+import com.example.store.DTO.stockManagment.ProductDTO;
+import com.example.store.Model.StockMangement.Category;
+import com.example.store.Model.StockMangement.Place;
+import com.example.store.Model.StockMangement.Product;
+import com.example.store.Model.StockMangement.Stock;
+import com.example.store.Service.stockManagment.CategoryService;
+import com.example.store.Service.stockManagment.PlaceService;
+import com.example.store.Service.stockManagment.ProductService;
+import com.example.store.Service.stockManagment.StockService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +22,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
