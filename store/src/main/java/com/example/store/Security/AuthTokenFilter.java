@@ -1,7 +1,7 @@
 package com.example.store.Security;
 
 
-import com.example.store.Service.AuthService.CustomUserDetailsService;
+import com.example.store.Security.details.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

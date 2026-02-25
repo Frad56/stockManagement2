@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { LoginRequest } from '../auth/LoginRequest';
 import { LoginResponse } from '../auth/LoginResponse';
+import { SignupRequest } from '../auth/SignupRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,13 @@ export class AuthService {
       .pipe(
         tap(response => {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('role', response.role);
         })
       );
   }
 
 
-  register(data: any) {
+  register(data: SignupRequest): Observable<any> {  
     return this.http.post(`${this.API}/signup`, data);
   }
 

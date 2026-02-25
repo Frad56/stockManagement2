@@ -3,7 +3,7 @@ package com.example.store.config;
 
 import com.example.store.Security.AuthEntryPointJwt;
 import com.example.store.Security.AuthTokenFilter;
-import com.example.store.Service.AuthService.CustomUserDetailsService;
+import com.example.store.Security.details.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

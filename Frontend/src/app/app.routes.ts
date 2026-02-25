@@ -4,7 +4,6 @@ export const routes: Routes = [
 
     {path:'',redirectTo: 'login', pathMatch:'full'},
     {path:'', loadChildren:() =>
-import('./auth/auth.module').then(m => m.AuthModule)}
+import('./auth/auth.routes').then(m => m.authRoutes)},
 
- 
 ];

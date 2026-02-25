@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { CommonModule } from '@angular/common'; 
+import { LoginResponse } from '../auth/LoginResponse';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -40,9 +41,16 @@ export class LoginComponent {
     };
 
     this.authService.login(loginData).subscribe({
-      next: (response) => {
+      next: (response : LoginResponse) => {
+      console.log('Role : ', response.role , 'token :',response.token );
+      if (response.role === 'ADMIN') {
+      this.router.navigate(['/AdminDashboard']); 
+    }else  if (response.role === 'WORKER') {
+      this.router.navigate(['/WorkerDashboard']);
       
-        this.router.navigate(['/dashboard']); 
+    }else {
+      this.router.navigate(['/MagasinerDashboard']);
+    }
       },
       error: (err) => {
         console.error(err);

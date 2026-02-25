@@ -1,16 +1,18 @@
 package com.example.store.Controller.AuthController;
 
+import com.example.store.DTO.authentification.LoginRequest;
 import com.example.store.DTO.authentification.LoginResponse;
 import com.example.store.DTO.authentification.UserDTO;
+import com.example.store.Model.Authentification.Role;
 import com.example.store.Model.Authentification.User;
-import com.example.store.Repository.AuthRepository.UserRepository;
 import com.example.store.Security.JwtUtil;
-import com.example.store.Service.AuthService.CustomUserDetailsService;
+import com.example.store.Security.details.CustomUserDetailsService;
 import com.example.store.Service.AuthService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,17 +45,18 @@ public class AuthController {
 
 
     @PostMapping("/signin")
-    public LoginResponse authenticateUser(@RequestBody UserDTO user) {
+    public LoginResponse authenticateUser(@RequestBody LoginRequest user) {
         Authentication authentication = authenticationManager.authenticate(
                 new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
                         user.getUsername(),
                         user.getPassword()
                 )
         );
-
         final UserDetails userDetails = (UserDetails) authentication.getPrincipal();
          String token =jwtUtil.generateToken(userDetails.getUsername());
-         return new LoginResponse(token);
+        User get_user = userService.findByUsername(user.getUsername());
+        Role user_Role = get_user.getRole();
+         return new LoginResponse(token,user_Role);
 
     }
 
