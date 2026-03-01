@@ -15,9 +15,11 @@ public class WorkerController {
 
 
 
-    @GetMapping("/WorkerInformations")
+   /* @GetMapping("/WorkerInformations")
     public ResponseEntity<UserResponse> getWorkerInformations(@AuthenticationPrincipal
                             CustomUserDetailsService userDetailsService){
        return new ResponseEntity<>.Ok().body("user name : "+userDetailsService.getUsername());
     }
+
+    */
 }

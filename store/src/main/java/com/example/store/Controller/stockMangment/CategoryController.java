@@ -12,6 +12,7 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("api/category")
 public class CategoryController {
 
     @Autowired

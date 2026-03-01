@@ -1,4 +1,4 @@
-package com.example.store.Security;
+package com.example.store.Security.jwt;
 
 
 import io.jsonwebtoken.Jwts;
@@ -33,7 +33,6 @@ public class JwtUtil {
     }
 
     public String generateToken(String username){
-
 
         return Jwts.builder()
                 .subject(username)

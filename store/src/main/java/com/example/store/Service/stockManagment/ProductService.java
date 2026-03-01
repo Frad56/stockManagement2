@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ProductService {
 
-   Product saveProduct(Product product);
+   Product saveProduct(ProductDTO product);
 
    List<Product> fetchProductList();
 

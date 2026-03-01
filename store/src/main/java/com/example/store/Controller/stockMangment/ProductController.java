@@ -18,6 +18,7 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("api/product")
 public class ProductController {
 
 
@@ -40,29 +41,7 @@ public class ProductController {
 
     @PostMapping("/products")
     public ResponseEntity<Product> saveProduct(@Valid @RequestBody ProductDTO dto) {
-        Category category = categoryService.findCategoryById(dto.getCategory_id());
-        System.out.println("******************************");
-        System.out.println(category);
-
-        Place place = placeService.findPlaceById(dto.getPlace_id());
-        System.out.println("******************************");
-        System.out.println(place);
-        System.out.println("******************************");
-
-        Stock stock = stockService.findStockById(dto.getStock_id());
-        System.out.println("******************************");
-        System.out.println(stock);
-        System.out.println("******************************");
-
-        Product product = new Product();
-            product.setCode(dto.getCode());
-            product.setName(dto.getName());
-            product.setUnityPrice(dto.getUnity_price());
-            product.setCategory(category);
-            product.setPlace(place);
-            product.setStock(stock);
-        Product return_product = productService.saveProduct(product);
-       return ResponseEntity.ok(return_product);
+       return ResponseEntity.ok(productService.saveProduct(dto));
     }
 
     @GetMapping("/products")

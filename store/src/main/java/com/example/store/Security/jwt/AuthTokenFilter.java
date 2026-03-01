@@ -1,4 +1,4 @@
-package com.example.store.Security;
+package com.example.store.Security.jwt;
 
 
 import com.example.store.Security.details.CustomUserDetailsService;
@@ -41,8 +41,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
                 final UserDetails userDetails =
                         userDetailsService.loadUserByUsername(username);
-                UsernamePasswordAuthenticationToken authenticationToken =
-                        new UsernamePasswordAuthenticationToken(
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                                 userDetails,
                                 null,
                                 userDetails.getAuthorities());

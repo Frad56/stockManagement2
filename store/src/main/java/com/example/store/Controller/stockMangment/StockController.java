@@ -12,6 +12,7 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("api/stock")
 public class StockController {
     @Autowired
     private StockService stockService;

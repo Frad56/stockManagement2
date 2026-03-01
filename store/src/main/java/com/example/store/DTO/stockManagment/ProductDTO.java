@@ -1,6 +1,7 @@
 package com.example.store.DTO.stockManagment;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 
 public class ProductDTO {
@@ -11,6 +12,7 @@ public class ProductDTO {
     private Long category_id;
     private Long place_id;
     private Long stock_id;
+    private List<Long> productIds;
 
     public Long getId() {
         return id;
@@ -66,5 +68,17 @@ public class ProductDTO {
 
     public void setStock_id(Long stock_id) {
         this.stock_id = stock_id;
+    }
+
+    public void setUnity_price(BigDecimal unity_price) {
+        this.unity_price = unity_price;
+    }
+
+    public List<Long> getProductIds() {
+        return productIds;
+    }
+
+    public void setProductIds(List<Long> productIds) {
+        this.productIds = productIds;
     }
 }

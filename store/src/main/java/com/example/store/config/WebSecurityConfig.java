@@ -1,8 +1,8 @@
 package com.example.store.config;
 
 
-import com.example.store.Security.AuthEntryPointJwt;
-import com.example.store.Security.AuthTokenFilter;
+import com.example.store.Security.jwt.AuthEntryPointJwt;
+import com.example.store.Security.jwt.AuthTokenFilter;
 import com.example.store.Security.details.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,8 +49,9 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
+                .cors(cors ->{})
                 .exceptionHandling(e ->
                         e.authenticationEntryPoint(unauthorizedHandler)
                 )
@@ -59,11 +60,18 @@ public class WebSecurityConfig {
                                 org.springframework.security.config.http.SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(a ->
-                        a.requestMatchers("/api/v1/auth/**").permitAll()
+                        a.requestMatchers("/api/v1/auth/**","api/product/products","/api/places/places",
+                                        "api/category/**",
+                                        "api/stock/**",
+                                        "api/product/**",
+                                        "api/productSupplier/**",
+                                        "api/supplier/**"
+                                        ).permitAll()
                                 .anyRequest().authenticated()
                 );
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
 }

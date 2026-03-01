@@ -1,11 +1,14 @@
 package com.example.store.Model.StockMangement;
 
 
+import com.example.store.Model.supplierManagement.ProductSupplier;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -40,6 +43,10 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "stock_id")
     private  Stock stock;
+
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ProductSupplier> product_suppliers = new ArrayList<>();
 
 
     public Product(){}
@@ -97,5 +104,13 @@ public class Product {
 
     public void setStock(Stock stock) {
         this.stock = stock;
+    }
+
+    public List<ProductSupplier> getProduct_suppliers() {
+        return product_suppliers;
+    }
+
+    public void setProduct_suppliers(List<ProductSupplier> product_suppliers) {
+        this.product_suppliers = product_suppliers;
     }
 }

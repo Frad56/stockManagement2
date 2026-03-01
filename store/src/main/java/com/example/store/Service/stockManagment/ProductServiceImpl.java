@@ -3,11 +3,16 @@ package com.example.store.Service.stockManagment;
 
 import com.example.store.DTO.stockManagment.ProductDTO;
 import com.example.store.Exception.ElementNotFoundException;
+import com.example.store.Model.StockMangement.Category;
+import com.example.store.Model.StockMangement.Place;
 import com.example.store.Model.StockMangement.Product;
+import com.example.store.Model.StockMangement.Stock;
+import com.example.store.Model.supplierManagement.ProductSupplier;
 import com.example.store.Repository.StockManagment.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,7 +34,32 @@ public class ProductServiceImpl implements ProductService {
 
     //Add
     @Override
-    public Product saveProduct(Product product){
+    public Product saveProduct(ProductDTO dto){
+        Category category = categoryService.findCategoryById(dto.getCategory_id());
+        System.out.println("******************************");
+        System.out.println(category);
+
+        Place place = placeService.findPlaceById(dto.getPlace_id());
+        System.out.println("******************************");
+        System.out.println(place);
+        System.out.println("******************************");
+
+        Stock stock = stockService.findStockById(dto.getStock_id());
+        System.out.println("******************************");
+        System.out.println(stock);
+
+        Product product = new Product();
+        product.setCode(dto.getCode());
+        product.setName(dto.getName());
+        product.setUnityPrice(dto.getUnity_price());
+        product.setCategory(category);
+        product.setPlace(place);
+        product.setStock(stock);
+        List<ProductSupplier> productSuppliers = new ArrayList<>();
+
+
+
+
         return productRepository.save(product);
     }
 

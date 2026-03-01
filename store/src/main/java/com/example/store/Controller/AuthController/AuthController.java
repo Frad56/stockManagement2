@@ -5,7 +5,7 @@ import com.example.store.DTO.authentification.LoginResponse;
 import com.example.store.DTO.authentification.UserDTO;
 import com.example.store.Model.Authentification.Role;
 import com.example.store.Model.Authentification.User;
-import com.example.store.Security.JwtUtil;
+import com.example.store.Security.jwt.JwtUtil;
 import com.example.store.Security.details.CustomUserDetailsService;
 import com.example.store.Service.AuthService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
