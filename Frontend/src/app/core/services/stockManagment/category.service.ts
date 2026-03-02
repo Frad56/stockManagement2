@@ -9,7 +9,7 @@ import { CategoryDTO } from '../../../shared/models/dto/Category.dto';
 })
 export class CategoryService {
 
-  private apriUrl = 'http://localhost:8080/';
+  private apriUrl = 'http://localhost:8080/api/category/';
   private http = inject(HttpClient);
 
   getCategories():Observable<Category[]>{

@@ -4,6 +4,6 @@ import { ProductCreateComponent } from "./pages/product-create/product-create.co
 
 export const PRODUCT_ROUTES:Routes = [
     
-    { path:'', component :ProductListComponent},
-    {path:'create',component:ProductCreateComponent}
+    { path:'products', component :ProductListComponent},
+    {path:'add-product',component:ProductCreateComponent}
 ];

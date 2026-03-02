@@ -60,13 +60,8 @@ public class WebSecurityConfig {
                                 org.springframework.security.config.http.SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(a ->
-                        a.requestMatchers("/api/v1/auth/**","api/product/products","/api/places/places",
-                                        "api/category/**",
-                                        "api/stock/**",
-                                        "api/product/**",
-                                        "api/productSupplier/**",
-                                        "api/supplier/**"
-                                        ).permitAll()
+                        a.requestMatchers("/api/v1/auth/**","/api/product/**").permitAll()
+                                //.requestMatchers().hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 );
 

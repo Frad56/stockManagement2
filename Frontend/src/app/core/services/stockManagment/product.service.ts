@@ -7,21 +7,21 @@ import { ProductDTO } from '../../../shared/models/dto/product.dto';
   providedIn: 'root'
 })
 export class ProductService {
-private apiUrl = 'http://localhost:8080/';
+private apiUrl = 'http://localhost:8080/api/product';
 private http = inject(HttpClient);
 
 getProducts() : Observable<Product[]>{
-  return this.http.get<Product[]>(`${this.apiUrl}products`);
+  return this.http.get<Product[]>(`${this.apiUrl}/ListProducts`);
 
 }
 
 addProduct(product:ProductDTO):Observable<Product>{
   console.log("le product Envoi au backend ",product);
-  return this.http.post<ProductDTO>(`${this.apiUrl}products`,product);
+  return this.http.post<ProductDTO>(`${this.apiUrl}/addProduct`,product);
 }
 
 editProduct(id:number,product:ProductDTO):Observable<Product>{
-  return this.http.put<Product>(`${this.apiUrl}products/${id}`,product);
+  return this.http.put<Product>(`${this.apiUrl}/update/${id}`,product);
 }
 
 

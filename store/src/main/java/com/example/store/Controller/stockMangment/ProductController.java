@@ -2,10 +2,9 @@ package com.example.store.Controller.stockMangment;
 
 
 import com.example.store.DTO.stockManagment.ProductDTO;
-import com.example.store.Model.StockMangement.Category;
-import com.example.store.Model.StockMangement.Place;
+
 import com.example.store.Model.StockMangement.Product;
-import com.example.store.Model.StockMangement.Stock;
+
 import com.example.store.Service.stockManagment.CategoryService;
 import com.example.store.Service.stockManagment.PlaceService;
 import com.example.store.Service.stockManagment.ProductService;
@@ -39,30 +38,30 @@ public class ProductController {
         this.placeService = placeService;
     }
 
-    @PostMapping("/products")
+    @PostMapping("/addProduct")
     public ResponseEntity<Product> saveProduct(@Valid @RequestBody ProductDTO dto) {
        return ResponseEntity.ok(productService.saveProduct(dto));
     }
 
-    @GetMapping("/products")
+    @GetMapping("/ListProducts")
     public ResponseEntity< List<Product> >fetchProductList(){
         List<Product> products =productService.fetchProductList();;
         return ResponseEntity.ok(products);
     }
 
-    @GetMapping("/products/find/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<Product> findProductById(@PathVariable("id") Long productId){
         Product product =  productService.findProductById(productId);
         return ResponseEntity.ok(product);
     }
 
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteProductByID(@PathVariable("id") Long productId){
         productService.deleteProductById(productId);
         return ResponseEntity.ok("Deleted Successfully");
     }
 
-    @PutMapping("/products/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Product> updateProductBuId(@RequestBody ProductDTO productDTO,@PathVariable Long id){
         Product updatedProduct = productService.updateProduct(productDTO,id);
         return  ResponseEntity.ok(updatedProduct);

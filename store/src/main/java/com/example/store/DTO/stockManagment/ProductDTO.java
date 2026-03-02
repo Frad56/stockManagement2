@@ -12,7 +12,7 @@ public class ProductDTO {
     private Long category_id;
     private Long place_id;
     private Long stock_id;
-    private List<Long> productIds;
+    private List<Long> supplierIds;
 
     public Long getId() {
         return id;
@@ -74,11 +74,11 @@ public class ProductDTO {
         this.unity_price = unity_price;
     }
 
-    public List<Long> getProductIds() {
-        return productIds;
+    public List<Long> getSupplierIds() {
+        return supplierIds;
     }
 
-    public void setProductIds(List<Long> productIds) {
-        this.productIds = productIds;
+    public void setSupplierIds(List<Long> supplierIds) {
+        this.supplierIds = supplierIds;
     }
 }

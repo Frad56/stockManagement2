@@ -39,17 +39,17 @@ export class ProductCreateComponent
     const productDTO = this.mapFormToProduct();
     this.productService.addProduct(productDTO).subscribe({
       next: (response) => {
-        console.log('Product Edit successfully', response);
+        console.log('Product Creat successfully', response);
         // Optionally, reset the form or navigate to another page
         this.productForm.reset();
       },
       error: (err) => {
-        console.error('Error edting product', err);
+        console.error('Error creating product', err);
       
         if (err.error?.message) {
           alert(err.error.message);   // message Spring
         } else {
-          alert('Erreur serveur lors editing   product');
+          alert('Erreur serveur lors création   product');
         }
         console.log("la response ",productDTO);
       }

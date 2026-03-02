@@ -8,7 +8,9 @@ import com.example.store.Model.StockMangement.Place;
 import com.example.store.Model.StockMangement.Product;
 import com.example.store.Model.StockMangement.Stock;
 import com.example.store.Model.supplierManagement.ProductSupplier;
+import com.example.store.Model.supplierManagement.Supplier;
 import com.example.store.Repository.StockManagment.ProductRepository;
+import com.example.store.Service.supplierManagement.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,7 @@ public class ProductServiceImpl implements ProductService {
     private StockService stockService;
     private CategoryService categoryService;
     private PlaceService placeService;
+    private SupplierService supplierService;
 
     @Autowired
     private ProductServiceImpl(ProductRepository productRepository,StockService stockService,CategoryService categoryService,PlaceService placeService){
@@ -55,10 +58,15 @@ public class ProductServiceImpl implements ProductService {
         product.setCategory(category);
         product.setPlace(place);
         product.setStock(stock);
-        List<ProductSupplier> productSuppliers = new ArrayList<>();
+      //  List<ProductSupplier> productSuppliers = new ArrayList<>();
 
-
-
+//        for(Long supplierId: dto.getSupplierIds()){
+//            Supplier supplier =supplierService.findSupplierById(supplierId);
+//            ProductSupplier ps = new ProductSupplier();
+//            ps.setProduct(product);
+//            ps.setSupplier(supplier);
+//        }
+//        product.setProduct_suppliers(productSuppliers);
 
         return productRepository.save(product);
     }

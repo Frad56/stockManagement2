@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Route } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -9,4 +11,16 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
 
+  private router = inject(Router);
+
+ getProducts(){
+    this.router.navigate(['/products']);
+ }
+
+ addProduct(){
+  this.router.navigate(['/add-product']);
+ }
+ addCategory(){
+  this.router.navigate(['categorys/add-category']);
+ }
 }

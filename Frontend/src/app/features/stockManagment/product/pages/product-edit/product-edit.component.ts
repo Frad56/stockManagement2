@@ -38,17 +38,17 @@ onSubmit() {
   const productDTO = this.mapFormToProduct();
   this.productService.addProduct(productDTO).subscribe({
     next: (response) => {
-      console.log('Product created successfully', response);
+      console.log('Product edtied successfully', response);
       // Optionally, reset the form or navigate to another page
       this.productForm.reset();
     },
     error: (err) => {
-      console.error('Error creating product', err);
+      console.error('Error edting product', err);
     
       if (err.error?.message) {
         alert(err.error.message);   // message Spring
       } else {
-        alert('Erreur serveur lors de la création du produit');
+        alert('Erreur serveur lors de  editing du produit');
       }
       console.log("la response ",productDTO);
     }
