@@ -1,1 +1,10 @@
 <p>stock-create works!</p>
+
+<form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input id="name" formControlName="name" />
+
+  <label for="quantity">Quantity:</label>
+  <input id="quantity" formControlName="quantity" type="number" />
+
+  <button type="submit">Create Stock</button>

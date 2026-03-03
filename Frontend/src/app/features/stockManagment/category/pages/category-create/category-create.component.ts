@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CategoryService } from '../../../../../core/services/stockManagment/category.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CategoryDTO } from '../../../../../shared/models/dto/Category.dto';
+import { CategoryDTO } from '../../../../../shared/models/dto/stockManagmentDTO/Category.dto';
 
 @Component({
   selector: 'app-category-create',

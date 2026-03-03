@@ -2,7 +2,7 @@ import { Injectable,Inject, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../../../shared/models/StockManagment/category.model';
 import{ Observable } from 'rxjs';
-import { CategoryDTO } from '../../../shared/models/dto/Category.dto';
+import { CategoryDTO } from '../../../shared/models/dto/stockManagmentDTO/Category.dto';
 
 @Injectable({
   providedIn: 'root'

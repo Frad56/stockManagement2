@@ -2,13 +2,13 @@ import { Injectable,inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Place } from '../../../shared/models/StockManagment/place.model';
 import { Observable } from 'rxjs';
-import { PlaceDTO } from '../../../shared/models/dto/place.dto';
+import { PlaceDTO } from '../../../shared/models/dto/stockManagmentDTO/place.dto';
 @Injectable({
   providedIn: 'root'
 })
 export class PlaceService {
 
-  private apiUrl = 'http://localhost:8080/';
+  private apiUrl = 'http://localhost:8080/api/place/';
   private http = inject(HttpClient);
 
   getPlaces(): Observable<Place[]>{

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { PlaceService } from '../../../../../core/services/stockManagment/place.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { PlaceDTO } from '../../../../../shared/models/dto/place.dto';
+import { PlaceDTO } from '../../../../../shared/models/dto/stockManagmentDTO/place.dto';
 
 @Component({
   selector: 'app-place-create',

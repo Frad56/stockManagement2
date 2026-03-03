@@ -1,0 +1,42 @@
+<p>create-supplier works!</p>
+<form [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="company_name">company_name:</label>
+    <input id="company_name" formControlName="company_name" />
+  </div>
+  <div>
+    <label for="contact_name">contact_name:</label>
+    <input id="contact_name" formControlName="contact_name" />
+  </div>
+  <div>
+    <label for="fax">fax:</label>
+    <input id="fax" formControlName="fax" />
+  </div>
+  <div>
+    <label for="email">email:</label>
+    <input id="email" formControlName="email" />
+  </div>
+  <div>
+    <label for="address">address:</label>
+    <input id="address" formControlName="address" />
+  </div>
+  <div>
+    <label for="city">city:</label>
+    <input id="city" formControlName="city" />
+  </div>
+  <div>
+    <label for="postal_code">postal_code:</label>
+    <input id="postal_code" formControlName="postal_code" />
+  </div>
+
+  <div>
+    <label for="country">country:</label>
+    <input id="country" formControlName="country" />
+  </div>
+<div formArrayName="productIds">
+  <div *ngFor="let productCtrl of productIds.controls; let i = index">
+    <label for="productId-{{ i }}">productId {{ i + 1 }}:</label>
+    <input id="productId-{{ i }}" [formControlName]="i" />
+  </div>
+  </div>
+  <button type="submit">Create Supplier</button>

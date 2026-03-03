@@ -2,7 +2,7 @@ import { Injectable,inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../../../shared/models/StockManagment/product.model';
-import { ProductDTO } from '../../../shared/models/dto/product.dto';
+import { ProductDTO } from '../../../shared/models/dto/stockManagmentDTO/product.dto';
 @Injectable({
   providedIn: 'root'
 })

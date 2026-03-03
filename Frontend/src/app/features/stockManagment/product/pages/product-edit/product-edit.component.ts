@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../../../../core/services/stockManagment/product.service';
-import { ProductDTO } from '../../../../../shared/models/dto/product.dto';
+import { ProductDTO } from '../../../../../shared/models/dto/stockManagmentDTO/product.dto';
 
 @Component({
   selector: 'app-product-edit',

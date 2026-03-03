@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import{ProductDTO} from '../../../../../shared/models/dto/product.dto';
+import{ProductDTO} from '../../../../../shared/models/dto/stockManagmentDTO/product.dto';
 import { ProductService } from '../../../../../core/services/stockManagment/product.service';
 import { inject } from '@angular/core';
 import { FormGroup ,ReactiveFormsModule, FormControl} from '@angular/forms';
