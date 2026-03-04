@@ -7,18 +7,21 @@ import com.example.store.Model.supplierManagement.ProductSupplier;
 import com.example.store.Model.supplierManagement.Supplier;
 import com.example.store.Repository.supplierManagement.SupplierRepository;
 import com.example.store.Service.stockManagment.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class SupplierServiceImpl  implements SupplierService{
 
     private SupplierRepository supplierRepository;
     private ProductService productService;
-    public SupplierServiceImpl(SupplierRepository supplierRepository){
+    public SupplierServiceImpl(SupplierRepository supplierRepository,ProductService productService){
         this.supplierRepository =supplierRepository;
+        this.productService = productService;
     }
 
     @Override
@@ -38,14 +41,19 @@ public class SupplierServiceImpl  implements SupplierService{
         List<ProductSupplier> productSuppliers = new ArrayList<>();
 
         for (Long productId : supplierDTO.getProductIds()) {
+            System.out.println("**********************************************************");
+            log.info("Product Id "+productId);
+            System.out.println("**********************************************************");
+
             Product product = productService.findProductById(productId);
+            log.info(product.getProduct_id()+"information about product");
             ProductSupplier ps = new ProductSupplier();
             ps.setSupplier(supplier);
             ps.setProduct(product);
             productSuppliers.add(ps);
         }
 
-        supplier.setProduct_suppliers(productSuppliers);
+
 
         return supplierRepository.save(supplier);
     }

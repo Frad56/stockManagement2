@@ -22,13 +22,13 @@ public class Supplier {
     private  Long supplier_id;
 
     @NotNull
-    @Column(name = "company_name")
+    @Column(name = "companyName")
     private String company_name;
 
-    @Column(name = "contact_name")
+    @Column(name = "contactName")
     private String contact_name;
 
-    @Column(name ="phone_number" )
+    @Column(name ="phoneNumber" )
     private String phone_number ;
 
     @Column(name = "fax")
@@ -43,7 +43,7 @@ public class Supplier {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "postal_code")
+    @Column(name = "postalCode")
     private String postal_code;
 
     @Column(name = "country")

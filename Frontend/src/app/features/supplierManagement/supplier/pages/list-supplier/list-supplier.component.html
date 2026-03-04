@@ -1,1 +1,17 @@
-<p>list-supplier works!</p>
+<p>Suppliers List</p>
+<ul>
+    <li *ngFor="let supplier of suppliers$ |async"  >
+        supplier_id: {{supplier.id}}
+        company_name: {{supplier.company_name}}
+        contact_name: {{supplier.contact_name}}
+        phone_number: {{supplier.phone_number}}
+        fax: {{supplier.fax}}
+        email: {{supplier.email}}
+        address: {{supplier.address}}
+        city: {{supplier.city}}
+        postal_code: {{supplier.postal_code}}
+        country: {{supplier.country}}
+    
+        
+    </li>
+</ul>

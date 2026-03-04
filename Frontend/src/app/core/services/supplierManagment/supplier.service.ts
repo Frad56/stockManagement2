@@ -15,7 +15,7 @@ export class SupplierService {
   constructor() { }
 
   getSuppliers():Observable<Supplier[]>{
-    return this.http.get<Supplier[]>(`${this.apiUrl}/all`);
+    return this.http.get<Supplier[]>(`${this.apiUrl}/suppliers`);
   }
 
   addSupplier(supplier: SupplierDTO):Observable<Supplier>{

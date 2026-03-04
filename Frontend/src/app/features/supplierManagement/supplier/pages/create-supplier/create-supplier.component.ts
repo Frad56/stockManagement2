@@ -3,18 +3,38 @@ import { SupplierService } from '../../../../../core/services/supplierManagment/
 import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { SupplierDTO } from '../../../../../shared/models/dto/supplierManagementDTO/supplier.dto';
 import { CommonModule } from '@angular/common';
+import { Product } from '../../../../../shared/models/StockManagment/product.model';
+import { ProductService } from '../../../../../core/services/stockManagment/product.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatOption } from "@angular/material/core";
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-create-supplier',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCardModule
+  ],
   templateUrl: './create-supplier.component.html',
-  styleUrl: './create-supplier.component.css'
+  styleUrls: ['./create-supplier.component.css']
 })
 export class CreateSupplierComponent {
 
   private supplierService = inject(SupplierService);
   private formBuilder = inject(FormBuilder);
+  private productService = inject(ProductService);
+
+
+  products: Product[] = [];
 
   supplierForm = this.formBuilder.group({
     company_name:[''],
@@ -26,28 +46,20 @@ export class CreateSupplierComponent {
     city:[''],
     postal_code:[''],
     country:[''],
-    productIds: this.formBuilder.array([])    
+    productIds: [[]] 
 
   });
-  get productIds() {
-    return this.supplierForm.get('productIds') as FormArray;
-  }
 
-  private mapFormToSupplier(): SupplierDTO {
-    const v = this.supplierForm.getRawValue();
-    return {
-      company_name: v.company_name ?? '',
-      contact_name: v.contact_name ?? '',
-      phone_number: v.phone_number ?? '',
-      fax: v.fax ?? '',
-      email: v.email ?? '',
-      address: v.address ?? '',
-      city: v.city ?? '',
-      postal_code: v.postal_code ?? '',
-      country: v.country ?? '',
-      productIds: (v.productIds as number[]) ?? []
-    };
-  }
+constructor() {
+  this.productService.getProducts().subscribe(
+    products => {this.products = products});
+}
+
+ 
+    
+private mapFormToSupplier(): SupplierDTO {
+  return this.supplierForm.getRawValue() as unknown as SupplierDTO;
+}
   onSubmit() {
     if(this.supplierForm.invalid) return;
     const supplierDTO = this.mapFormToSupplier();
@@ -71,3 +83,4 @@ export class CreateSupplierComponent {
   }
 
 }
+
