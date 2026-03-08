@@ -1,9 +1,12 @@
 package com.example.store.DTO.stockManagment;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
-import java.util.List;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductDTO {
     private Long id;
     private String code;
@@ -12,7 +15,7 @@ public class ProductDTO {
     private Long category_id;
     private Long place_id;
     private Long stock_id;
-    private List<Long> supplierIds;
+
 
     public Long getId() {
         return id;
@@ -74,11 +77,4 @@ public class ProductDTO {
         this.unity_price = unity_price;
     }
 
-    public List<Long> getSupplierIds() {
-        return supplierIds;
-    }
-
-    public void setSupplierIds(List<Long> supplierIds) {
-        this.supplierIds = supplierIds;
-    }
 }

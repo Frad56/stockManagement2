@@ -1,6 +1,7 @@
 package com.example.store.Model.supplierManagement;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long supplier_id;
+    private Long supplier_id;
 
     @NotNull
     @Column(name = "companyName")
@@ -28,8 +29,8 @@ public class Supplier {
     @Column(name = "contactName")
     private String contact_name;
 
-    @Column(name ="phoneNumber" )
-    private String phone_number ;
+    @Column(name = "phoneNumber")
+    private String phone_number;
 
     @Column(name = "fax")
     private String fax;
@@ -49,6 +50,7 @@ public class Supplier {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "supplier",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ProductSupplier> product_suppliers = new ArrayList<>();
 }

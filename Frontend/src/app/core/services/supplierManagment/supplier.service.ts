@@ -20,7 +20,7 @@ export class SupplierService {
 
   addSupplier(supplier: SupplierDTO):Observable<Supplier>{
     console.log("Supplier service is called to add a new supplier");
-    return this.http.post<Supplier>(`${this.apiUrl}/suppliers`,supplier);
+    return this.http.post<Supplier>(`${this.apiUrl}/addSupplier`,supplier);
   }
 
 }

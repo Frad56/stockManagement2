@@ -1,7 +1,7 @@
 <p>Suppliers List</p>
 <ul>
     <li *ngFor="let supplier of suppliers$ |async"  >
-        supplier_id: {{supplier.id}}
+        supplier_id: {{supplier.supplier_id}}
         company_name: {{supplier.company_name}}
         contact_name: {{supplier.contact_name}}
         phone_number: {{supplier.phone_number}}
@@ -11,7 +11,7 @@
         city: {{supplier.city}}
         postal_code: {{supplier.postal_code}}
         country: {{supplier.country}}
-    
+      
         
     </li>
 </ul>

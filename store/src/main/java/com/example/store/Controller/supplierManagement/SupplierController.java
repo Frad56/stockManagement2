@@ -20,7 +20,7 @@ public class SupplierController {
         this.supplierService =supplierService;
     }
 
-    @PostMapping("/suppliers")
+    @PostMapping("/addSupplier")
     public ResponseEntity<Supplier> saveSupplier(@Valid @RequestBody SupplierDTO dto){
         Supplier supplier = supplierService.saveSupplier(dto);
         return ResponseEntity.ok(supplier);

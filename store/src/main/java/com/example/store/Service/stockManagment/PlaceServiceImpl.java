@@ -1,7 +1,9 @@
 package com.example.store.Service.stockManagment;
 
+import com.example.store.DTO.stockManagment.ProductDTO;
 import com.example.store.Exception.ElementNotFoundException;
 import com.example.store.Model.StockMangement.Place;
+import com.example.store.Model.StockMangement.Product;
 import com.example.store.Repository.StockManagment.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,16 @@ public class PlaceServiceImpl implements PlaceService {
         this.placeRepository=placeRepository;
     }
 
+//    @Override
+//    public ProductDTO convertToDTO (Product product){
+//        return new ProductDTO(
+//                product.getProduct_id(),
+//                product.getCode(),
+//                product.getName(),
+//                product.getUnityPrice()
+//
+//        );
+//    }
     //add
     @Override
     public Place savePlace(Place place){

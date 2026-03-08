@@ -18,5 +18,24 @@
     gap: 16px;
     width: 400px; 
   }
-  
+.title{
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
  
+.button-group{
+  display: flex;
+  justify-content: space-between; /* Espace entre les boutons */
+  width: 100%; /* Prend toute la largeur du conteneur */
+  margin-top: 20px; /* Espace au-dessus des boutons */
+}
+.back-button{
+
+  border: none;
+  padding: 10px 30px;
+  border-radius: 4px;
+  cursor: pointer;
+}

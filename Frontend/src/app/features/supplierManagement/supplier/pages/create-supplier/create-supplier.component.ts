@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { SupplierService } from '../../../../../core/services/supplierManagment/supplier.service';
-import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { SupplierDTO } from '../../../../../shared/models/dto/supplierManagementDTO/supplier.dto';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../../../shared/models/StockManagment/product.model';
-import { ProductService } from '../../../../../core/services/stockManagment/product.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatOption } from "@angular/material/core";
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-supplier',
@@ -31,10 +30,11 @@ export class CreateSupplierComponent {
 
   private supplierService = inject(SupplierService);
   private formBuilder = inject(FormBuilder);
-  private productService = inject(ProductService);
+  private location = inject(Location);
 
 
   products: Product[] = [];
+  
 
   supplierForm = this.formBuilder.group({
     company_name:[''],
@@ -45,18 +45,11 @@ export class CreateSupplierComponent {
     address:[''],
     city:[''],
     postal_code:[''],
-    country:[''],
-    productIds: [[]] 
+    country:['']
 
   });
 
-constructor() {
-  this.productService.getProducts().subscribe(
-    products => {this.products = products});
-}
 
- 
-    
 private mapFormToSupplier(): SupplierDTO {
   return this.supplierForm.getRawValue() as unknown as SupplierDTO;
 }
@@ -65,6 +58,7 @@ private mapFormToSupplier(): SupplierDTO {
     const supplierDTO = this.mapFormToSupplier();
     this.supplierService.addSupplier(supplierDTO).subscribe({
       next: (response) => {
+        alert('Supplier created successfully');
         console.log('Supplier created successfully', response);
         this.supplierForm.reset();
       },
@@ -81,6 +75,12 @@ private mapFormToSupplier(): SupplierDTO {
     });
 
   }
+
+  goBack() {
+    this.location.back();
+  }
+
+  
 
 }
 

@@ -1,18 +1,28 @@
 import { Component, inject } from '@angular/core';
-import { Route } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [],
+  imports: [MatSidenavModule, MatButtonModule,CommonModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-
+  showStockManagment = false;
+  showUserManagment =false;
+  showSupplierManagment = false;
   private router = inject(Router);
 
+
+//* ****************   SignUP    ************************** */
+signUp(){
+  this.router.navigate(['/SignUp']);
+}
 //Stock Managment
 //Products
  getProducts(){
@@ -22,6 +32,11 @@ export class AdminComponent {
  addProduct(){
   this.router.navigate(['/add-product']);
  }
+
+ //add Product Supplier 
+  addProductSupplier(){
+    this.router.navigate(['product-suppliers/add-product-supplier']);
+  }
 
  //Categorys
  addCategory(){
@@ -43,5 +58,8 @@ export class AdminComponent {
  //supplier
  addSupplier(){
   this.router.navigate(['suppliers/add-supplier']);
+ }
+ allSuppliers(){
+  this.router.navigate(['suppliers/suppliers']);
  }
 }

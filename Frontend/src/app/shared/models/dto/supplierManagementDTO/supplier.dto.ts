@@ -9,6 +9,7 @@ export interface SupplierDTO {
     city: string;
     postal_code: string;
     country: string;
-   productIds: number[]; 
+
+  
     
 }

@@ -2,6 +2,7 @@ package com.example.store.Model.StockMangement;
 
 
 import com.example.store.Model.supplierManagement.ProductSupplier;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -46,6 +47,7 @@ public class Product {
 
 
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonManagedReference
     private List<ProductSupplier> product_suppliers = new ArrayList<>();
 
 

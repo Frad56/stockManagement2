@@ -25,7 +25,7 @@ public class ProductSupplierController {
     }
 
     //add
-    @PostMapping("/productSupplier")
+    @PostMapping("/addProductSupplier")
     public ResponseEntity<ProductSupplier> saveProduct(@Valid @RequestBody ProductSupplierDTO dto){
         ProductSupplier return_productSupplier = productSupplierService.saveProductSupplier(dto);
         return ResponseEntity.ok(return_productSupplier);

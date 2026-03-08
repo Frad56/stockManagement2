@@ -4,6 +4,8 @@ import { Observable, tap } from 'rxjs';
 import { LoginRequest } from '../auth/LoginRequest';
 import { LoginResponse } from '../auth/LoginResponse';
 import { SignupRequest } from '../auth/SignupRequest';
+import { UserDTO } from '../authDTO/UserDTO.dto';
+import { ApiResponse } from '../authDTO/ApiResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +24,10 @@ export class AuthService {
           localStorage.setItem('role', response.role);
         })
       );
+  }
+
+  signup(data: UserDTO): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.API}/signup`, data);
   }
 
 

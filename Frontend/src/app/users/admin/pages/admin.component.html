@@ -1,13 +1,92 @@
-<h1> hi admin </h1>
-<button (click)="getProducts()">List produits</button>
-<button (click)="addProduct()">add addProduct</button>
 
 
-<button (click)="addCategory()">add Category</button>
+<mat-drawer-container class="container">
+
+  <mat-drawer #drawer mode="side" opened class="sidenav">
+
+    <h3 class="menu-title">Menu</h3>
+
+    <!-- STOCK MANAGEMENT -->
+    <button mat-raised-button color="primary"
+            (click)="showStockManagment = !showStockManagment">
+      Stock Management
+    </button>
+
+    <div *ngIf="showStockManagment" class="submenu">
+
+      <button mat-button (click)="getProducts()">
+        List Products
+      </button>
+
+      <button mat-button (click)="addProduct()">
+        Add Product
+      </button>
+
+      <button mat-button (click)="addCategory()">
+        Add Category
+      </button>
+
+      <button mat-button (click)="addPlace()">
+        Add Place
+      </button>
+
+      <button mat-button (click)="addStock()">
+        Add Stock
+      </button>
+      <!-- Add Product supplier  -->
+
+        <button mat-button (click)="addProductSupplier()">
+          Add Product Supplier
+        </button>
+    </div>
 
 
-<button (click)="addPlace()">add Place</button>
+    <!-- USER MANAGEMENT -->
+    <button mat-raised-button color="primary"
+            (click)="showUserManagment = !showUserManagment">
+      User Management
+    </button>
 
-<button (click)="addStock()">add Stock</button>
+    <div *ngIf="showUserManagment" class="submenu">
 
-<button (click)="addSupplier()">add Supplier</button>
+      <button mat-button (click)="signUp()">
+        Add User
+      </button>
+
+    </div>
+
+
+    <!-- SUPPLIER MANAGEMENT -->
+    <button mat-raised-button color="primary"
+            (click)="showSupplierManagment = !showSupplierManagment">
+      Supplier Management
+    </button>
+
+    <div *ngIf="showSupplierManagment" class="submenu">
+
+      <button mat-button (click)="addSupplier()">
+        Add Supplier
+      </button>
+
+      <button mat-button (click)="allSuppliers()">
+        All Suppliers
+      </button>
+
+    </div>
+
+  </mat-drawer>
+
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <button mat-raised-button color="primary"
+            (click)="drawer.toggle()">
+       Menu
+    </button>
+
+    <h1>Hi Admin 👋</h1>
+
+  </div>
+
+</mat-drawer-container>

@@ -27,7 +27,6 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
         this.productService = productService;
         this.supplierService =supplierService;
     }
-
     @Override
     public ProductSupplier saveProductSupplier(ProductSupplierDTO productSupplier){
         ProductSupplier saveProductSupplier = new ProductSupplier();
@@ -44,6 +43,7 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
         productSupplierRepository.save(saveProductSupplier);
         return saveProductSupplier;
     }
+
 
     @Override
     public ProductSupplier findProductSupplierById(Long productSupplierId){

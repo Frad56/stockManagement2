@@ -20,5 +20,6 @@ public class SupplierDTO {
     private String city;
     private String postal_code;
     private String country;
-    private List<Long> productIds;
+
+
 }

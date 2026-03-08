@@ -1,10 +1,12 @@
 package com.example.store.Service.supplierManagement;
 
+import com.example.store.DTO.supplierManagement.ProductSupplierDTO;
 import com.example.store.DTO.supplierManagement.SupplierDTO;
 import com.example.store.Exception.ElementNotFoundException;
 import com.example.store.Model.StockMangement.Product;
 import com.example.store.Model.supplierManagement.ProductSupplier;
 import com.example.store.Model.supplierManagement.Supplier;
+import com.example.store.Repository.supplierManagement.ProductSupplierRepository;
 import com.example.store.Repository.supplierManagement.SupplierRepository;
 import com.example.store.Service.stockManagment.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +21,11 @@ public class SupplierServiceImpl  implements SupplierService{
 
     private SupplierRepository supplierRepository;
     private ProductService productService;
-    public SupplierServiceImpl(SupplierRepository supplierRepository,ProductService productService){
+    public SupplierServiceImpl(SupplierRepository supplierRepository,
+                               ProductService productService){
         this.supplierRepository =supplierRepository;
         this.productService = productService;
+
     }
 
     @Override
@@ -38,22 +42,20 @@ public class SupplierServiceImpl  implements SupplierService{
         supplier.setPostal_code(supplierDTO.getPostal_code());
         supplier.setCountry(supplierDTO.getCountry());
 
-        List<ProductSupplier> productSuppliers = new ArrayList<>();
+       // List<ProductSupplier> listProductSuppliers = new ArrayList<>();
+       // Supplier return_supplier =supplierRepository.save(supplier);
 
-        for (Long productId : supplierDTO.getProductIds()) {
-            System.out.println("**********************************************************");
-            log.info("Product Id "+productId);
-            System.out.println("**********************************************************");
-
-            Product product = productService.findProductById(productId);
-            log.info(product.getProduct_id()+"information about product");
-            ProductSupplier ps = new ProductSupplier();
-            ps.setSupplier(supplier);
-            ps.setProduct(product);
-            productSuppliers.add(ps);
-        }
-
-
+//        for (ProductSupplierDTO productSupplierDTO : supplierDTO.getProducts()) {
+//            Product product = productService.findProductById(productSupplierDTO.getProduct_id());
+//
+//            ProductSupplier ps =new ProductSupplier() ;
+//            ps.setSupplier(supplier);
+//            ps.setProduct(product);
+//            ps.setPurchase_price(productSupplierDTO.getPurchase_price());
+//
+//            listProductSuppliers.add(ps);
+//        }
+//        supplier.setProduct_suppliers(listProductSuppliers);
 
         return supplierRepository.save(supplier);
     }

@@ -42,7 +42,7 @@ public class UserService {
         user.setEmail(user_request.getEmail());
         user.setUsername(user_request.getUsername());
         user.setPassword(passwordEncoder.encode(user_request.getPassword()));
-        user.setRole(Role.WORKER);
+        user.setRole(user_request.getRole());
 
         userRepository.save(user);
     }

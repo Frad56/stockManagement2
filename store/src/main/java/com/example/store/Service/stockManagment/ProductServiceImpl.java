@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
         product.setCategory(category);
         product.setPlace(place);
         product.setStock(stock);
-      //  List<ProductSupplier> productSuppliers = new ArrayList<>();
+        //  List<ProductSupplier> productSuppliers = new ArrayList<>();
 
 //        for(Long supplierId: dto.getSupplierIds()){
 //            Supplier supplier =supplierService.findSupplierById(supplierId);

@@ -1,5 +1,6 @@
 package com.example.store.Controller.AuthController;
 
+import com.example.store.DTO.Response.ApiResponse;
 import com.example.store.DTO.authentification.LoginRequest;
 import com.example.store.DTO.authentification.LoginResponse;
 import com.example.store.DTO.authentification.UserDTO;
@@ -62,11 +63,11 @@ public class AuthController {
 
 
     @PostMapping("/signup")
-    public ResponseEntity<String> register(@RequestBody UserDTO user){
+    public ResponseEntity<ApiResponse> register(@RequestBody UserDTO user){
         if (userService.verifyUserExisting(user.getUsername())){
-            return ResponseEntity.badRequest().body("user Already Exist");
+            return ResponseEntity.badRequest().body(new ApiResponse(false,"user Already Exist"));
         }
         userService.register(user);
-        return ResponseEntity.ok("user created");
+        return ResponseEntity.ok(new ApiResponse(true,"user created successfully"));
     }
 }

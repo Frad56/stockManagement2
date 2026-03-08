@@ -1,23 +1,31 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { CommonModule } from '@angular/common'; 
 import { LoginResponse } from '../auth/LoginResponse';
+import { MatFormField, MatError, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,
+    MatFormField,
+    MatInput,
+    MatButtonModule,
+    MatCardModule, MatIconModule, MatError, MatLabel],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-
+  hidePassword = true;
   userForm: FormGroup;
-
-
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
@@ -30,30 +38,22 @@ export class LoginComponent {
     });
   }
 
- 
   login() {
     if (this.userForm.invalid) return;
 
-  
-    const loginData = {
-      username: this.userForm.value.username,
-      password: this.userForm.value.password
-    };
+    this.authService.login(this.userForm.value).subscribe({
+      next: (response: LoginResponse) => {
 
-    this.authService.login(loginData).subscribe({
-      next: (response : LoginResponse) => {
-      console.log('Role : ', response.role , 'token :',response.token );
-      if (response.role === 'ADMIN') {
-      this.router.navigate(['/AdminDashboard']); 
-    }else  if (response.role === 'WORKER') {
-      this.router.navigate(['/WorkerDashboard']);
-      
-    }else {
-      this.router.navigate(['/MagasinerDashboard']);
-    }
+        if (response.role === 'ADMIN') {
+          this.router.navigate(['/AdminDashboard']);
+        } else if (response.role === 'WORKER') {
+          this.router.navigate(['/WorkerDashboard']);
+        } else {
+          this.router.navigate(['/MagasinerDashboard']);
+        }
+
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
         this.errorMessage = 'Nom d’utilisateur ou mot de passe incorrect';
       }
     });
