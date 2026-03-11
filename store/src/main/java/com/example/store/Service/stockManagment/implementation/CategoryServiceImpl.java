@@ -1,9 +1,10 @@
-package com.example.store.Service.stockManagment;
+package com.example.store.Service.stockManagment.implementation;
 
 
 import com.example.store.Exception.ElementNotFoundException;
 import com.example.store.Model.StockMangement.Category;
 import com.example.store.Repository.StockManagment.CategoryRepository;
+import com.example.store.Service.stockManagment.interfaces.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

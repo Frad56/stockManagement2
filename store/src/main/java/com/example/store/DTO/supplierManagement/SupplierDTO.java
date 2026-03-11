@@ -11,9 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class SupplierDTO {
-    private String company_name;
-    private String contact_name;
-    private String phone_number ;
+    private String companyName;
+    private String contactName;
+    private String phoneNumber ;
     private String fax;
     private String email;
     private String address;

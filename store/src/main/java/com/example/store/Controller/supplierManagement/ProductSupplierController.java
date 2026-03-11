@@ -2,9 +2,7 @@ package com.example.store.Controller.supplierManagement;
 
 
 import com.example.store.DTO.supplierManagement.ProductSupplierDTO;
-import com.example.store.Model.StockMangement.Product;
 import com.example.store.Model.supplierManagement.ProductSupplier;
-import com.example.store.Service.stockManagment.ProductService;
 import com.example.store.Service.supplierManagement.ProductSupplierService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

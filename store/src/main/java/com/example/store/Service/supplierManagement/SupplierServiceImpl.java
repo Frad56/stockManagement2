@@ -1,18 +1,13 @@
 package com.example.store.Service.supplierManagement;
 
-import com.example.store.DTO.supplierManagement.ProductSupplierDTO;
 import com.example.store.DTO.supplierManagement.SupplierDTO;
 import com.example.store.Exception.ElementNotFoundException;
-import com.example.store.Model.StockMangement.Product;
-import com.example.store.Model.supplierManagement.ProductSupplier;
 import com.example.store.Model.supplierManagement.Supplier;
-import com.example.store.Repository.supplierManagement.ProductSupplierRepository;
 import com.example.store.Repository.supplierManagement.SupplierRepository;
-import com.example.store.Service.stockManagment.ProductService;
+import com.example.store.Service.stockManagment.interfaces.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -32,9 +27,9 @@ public class SupplierServiceImpl  implements SupplierService{
     public Supplier saveSupplier(SupplierDTO supplierDTO){
 
         Supplier supplier = new Supplier();
-        supplier.setCompany_name(supplierDTO.getCompany_name());
-        supplier.setContact_name(supplierDTO.getContact_name());
-        supplier.setPhone_number(supplierDTO.getPhone_number());
+        supplier.setCompany_name(supplierDTO.getCompanyName());
+        supplier.setContact_name(supplierDTO.getContactName());
+        supplier.setPhone_number(supplierDTO.getPhoneNumber());
         supplier.setFax(supplierDTO.getFax());
         supplier.setEmail(supplierDTO.getEmail());
         supplier.setAddress(supplierDTO.getAddress());
@@ -42,20 +37,6 @@ public class SupplierServiceImpl  implements SupplierService{
         supplier.setPostal_code(supplierDTO.getPostal_code());
         supplier.setCountry(supplierDTO.getCountry());
 
-       // List<ProductSupplier> listProductSuppliers = new ArrayList<>();
-       // Supplier return_supplier =supplierRepository.save(supplier);
-
-//        for (ProductSupplierDTO productSupplierDTO : supplierDTO.getProducts()) {
-//            Product product = productService.findProductById(productSupplierDTO.getProduct_id());
-//
-//            ProductSupplier ps =new ProductSupplier() ;
-//            ps.setSupplier(supplier);
-//            ps.setProduct(product);
-//            ps.setPurchase_price(productSupplierDTO.getPurchase_price());
-//
-//            listProductSuppliers.add(ps);
-//        }
-//        supplier.setProduct_suppliers(listProductSuppliers);
 
         return supplierRepository.save(supplier);
     }

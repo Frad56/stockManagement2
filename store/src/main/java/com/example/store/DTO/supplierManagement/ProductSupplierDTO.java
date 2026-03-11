@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class ProductSupplierDTO {
     private Long product_id;
     private Long supplier_id;
-    private Double purchase_price;
+    private Double purchasePrice;
 }

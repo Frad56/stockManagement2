@@ -7,7 +7,7 @@ import com.example.store.Model.StockMangement.Product;
 import com.example.store.Model.supplierManagement.ProductSupplier;
 import com.example.store.Model.supplierManagement.Supplier;
 import com.example.store.Repository.supplierManagement.ProductSupplierRepository;
-import com.example.store.Service.stockManagment.ProductService;
+import com.example.store.Service.stockManagment.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,43 +22,44 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 
     @Autowired
     public ProductSupplierServiceImpl(ProductSupplierRepository productSupplierRepository, ProductService productService,
-                                      SupplierService supplierService){
-        this.productSupplierRepository =productSupplierRepository;
+                                      SupplierService supplierService) {
+        this.productSupplierRepository = productSupplierRepository;
         this.productService = productService;
-        this.supplierService =supplierService;
+        this.supplierService = supplierService;
     }
+
     @Override
-    public ProductSupplier saveProductSupplier(ProductSupplierDTO productSupplier){
+    public ProductSupplier saveProductSupplier(ProductSupplierDTO productSupplier) {
         ProductSupplier saveProductSupplier = new ProductSupplier();
 
-        Long product_id =productSupplier.getProduct_id();
-        Product findProduct =productService.findProductById(product_id);
-        if(findProduct != null){
+        Long product_id = productSupplier.getProduct_id();
+        Product findProduct = productService.findProductById(product_id);
+        if (findProduct != null) {
             saveProductSupplier.setProduct(findProduct);
         }
 
         Supplier supplier = supplierService.findSupplierById(productSupplier.getSupplier_id());
         saveProductSupplier.setSupplier(supplier);
-        saveProductSupplier.setPurchase_price(productSupplier.getPurchase_price());
+        saveProductSupplier.setPurchasePrice(productSupplier.getPurchasePrice());
         productSupplierRepository.save(saveProductSupplier);
         return saveProductSupplier;
     }
 
 
     @Override
-    public ProductSupplier findProductSupplierById(Long productSupplierId){
-       return productSupplierRepository.findById(productSupplierId)
-               .orElseThrow(() -> new ElementNotFoundException(productSupplierId));
+    public ProductSupplier findProductSupplierById(Long productSupplierId) {
+        return productSupplierRepository.findById(productSupplierId)
+                .orElseThrow(() -> new ElementNotFoundException(productSupplierId));
     }
 
     @Override
-    public List<ProductSupplier>  fetchProductSupplierList(){
+    public List<ProductSupplier> fetchProductSupplierList() {
         return productSupplierRepository.findAll();
     }
 
     @Override
-    public void deleteProductSupplierById(Long productSupplierId){
-        if(!productSupplierRepository.existsById(productSupplierId)){
+    public void deleteProductSupplierById(Long productSupplierId) {
+        if (!productSupplierRepository.existsById(productSupplierId)) {
             throw new ElementNotFoundException(productSupplierId);
         }
         productSupplierRepository.deleteById(productSupplierId);

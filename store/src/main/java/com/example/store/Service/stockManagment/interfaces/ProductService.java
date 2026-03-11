@@ -1,4 +1,4 @@
-package com.example.store.Service.stockManagment;
+package com.example.store.Service.stockManagment.interfaces;
 
 
 import com.example.store.DTO.stockManagment.ProductDTO;

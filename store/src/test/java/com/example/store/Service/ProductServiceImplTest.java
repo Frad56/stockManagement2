@@ -6,7 +6,7 @@ import com.example.store.Repository.StockManagment.CategoryRepository;
 import com.example.store.Repository.StockManagment.PlaceRepository;
 import com.example.store.Repository.StockManagment.ProductRepository;
 import com.example.store.Repository.StockManagment.StockRepository;
-import com.example.store.Service.stockManagment.ProductServiceImpl;
+import com.example.store.Service.stockManagment.implementation.ProductServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

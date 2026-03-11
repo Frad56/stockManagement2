@@ -3,35 +3,36 @@ package com.example.store.Model.StockMangement;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "category")
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long category_id;
+    private Long categoryId;
 
-    @NotNull
+
     @Column(name = "name")
     private String name;
 
-    public Category(){}
+    @Column(name = "description")
+    private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Category parent;
 
-    public Long getId() {
-        return category_id;
-    }
+    @OneToMany(mappedBy = "parent")
+    private List<Category> children;
 
-    public void setId(Long id) {
-        this.category_id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
+

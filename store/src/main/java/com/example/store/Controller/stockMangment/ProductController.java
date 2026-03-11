@@ -5,10 +5,8 @@ import com.example.store.DTO.stockManagment.ProductDTO;
 
 import com.example.store.Model.StockMangement.Product;
 
-import com.example.store.Service.stockManagment.CategoryService;
-import com.example.store.Service.stockManagment.PlaceService;
-import com.example.store.Service.stockManagment.ProductService;
-import com.example.store.Service.stockManagment.StockService;
+import com.example.store.Service.stockManagment.interfaces.CategoryService;
+import com.example.store.Service.stockManagment.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,19 +21,16 @@ public class ProductController {
 
     private final ProductService productService;
     private final CategoryService categoryService;
-    private final StockService stockService;
-    private  final PlaceService placeService;
+
 
 
     @Autowired
     public ProductController(ProductService productService,
                              CategoryService categoryService,
-                             StockService stockService,
-                             PlaceService placeService){
+                            ){
         this.productService =productService;
         this.categoryService = categoryService;
-        this.stockService = stockService;
-        this.placeService = placeService;
+
     }
 
     @PostMapping("/addProduct")

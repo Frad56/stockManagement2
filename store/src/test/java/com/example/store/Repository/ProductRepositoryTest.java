@@ -2,9 +2,7 @@ package com.example.store.Repository;
 
 
 import com.example.store.Model.StockMangement.Category;
-import com.example.store.Model.StockMangement.Place;
 import com.example.store.Model.StockMangement.Product;
-import com.example.store.Model.StockMangement.Stock;
 import com.example.store.Repository.StockManagment.CategoryRepository;
 import com.example.store.Repository.StockManagment.PlaceRepository;
 import com.example.store.Repository.StockManagment.ProductRepository;

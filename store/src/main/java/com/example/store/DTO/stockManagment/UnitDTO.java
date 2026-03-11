@@ -1,24 +1,19 @@
 package com.example.store.DTO.stockManagment;
 
 
+import com.example.store.Model.StockMangement.SizeType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CategoryDTO {
-    private Long categoryId;
+public class UnitDTO {
 
+    private Long unitId;
     private String name;
+    private String symbol;
+    private SizeType sizeType;
 
-    private String description;
-
-    private Long parentId;
-
-    private List<Long> childrenIds;
 }
