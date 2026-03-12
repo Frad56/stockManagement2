@@ -36,7 +36,7 @@ public class ProductVariant {
 
     @ManyToOne
     @JoinColumn(name="aisle_id")
-    private Aisle aisleId;
+    private Aisle aisle;
 
 
 

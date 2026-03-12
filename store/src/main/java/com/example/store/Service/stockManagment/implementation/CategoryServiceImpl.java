@@ -1,6 +1,7 @@
 package com.example.store.Service.stockManagment.implementation;
 
 
+import com.example.store.DTO.stockManagment.CategoryDTO;
 import com.example.store.Exception.ElementNotFoundException;
 import com.example.store.Model.StockMangement.Category;
 import com.example.store.Repository.StockManagment.CategoryRepository;
@@ -14,39 +15,58 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
 
-    private CategoryRepository categoryRepository;
+    private  final CategoryRepository categoryRepository;
 
     @Autowired
     public CategoryServiceImpl(CategoryRepository categoryRepository){
         this.categoryRepository =categoryRepository;
     }
 
-    //add
+
+    private void mapDTOToCategory(CategoryDTO categoryDTO, Category category) {
+        category.setName(categoryDTO.getName());
+        category.setDescription(categoryDTO.getDescription());
+        if(categoryDTO.getParentId() != null){
+            Category parent  =categoryRepository.findById(categoryDTO.getParentId())
+                    .orElseThrow(()-> new ElementNotFoundException( "Parent category not found with id: "
+                            + categoryDTO.getParentId()));
+            category.setParent(parent);
+        }
+    }
     @Override
-    public Category saveCategory(Category category){
+    public Category saveCategory(CategoryDTO categoryDTO){
+        Category category = new Category();
+
+        mapDTOToCategory(categoryDTO,category);
         return categoryRepository.save(category);
     }
 
-    //Read
+
     @Override
     public List<Category> fetchCategoryList(){
         return categoryRepository.findAll();
     }
 
-    //delete
+
     @Override
-    public void deleteCategoryByID(Long categoryId){
+    public void deleteCategoryById(Long categoryId){
         if(!categoryRepository.existsById(categoryId)){
             throw new ElementNotFoundException(categoryId);
         }
         categoryRepository.deleteById(categoryId);
     }
 
-    //Search
     @Override
     public Category findCategoryById(Long categoryId){
         return  categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new ElementNotFoundException(categoryId));
+    }
+
+    @Override
+    public Category updateCategory(CategoryDTO categoryDTO, Long categoryId){
+        Category category =findCategoryById(categoryId);
+        mapDTOToCategory(categoryDTO,category);
+        return categoryRepository.save(category);
     }
 }
 

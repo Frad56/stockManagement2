@@ -2,7 +2,9 @@ package com.example.store.Service.stockManagment.interfaces;
 
 
 import com.example.store.DTO.stockManagment.ProductDTO;
+import com.example.store.DTO.stockManagment.ProductVariantDTO;
 import com.example.store.Model.StockMangement.Product;
+import com.example.store.Model.StockMangement.ProductVariant;
 
 import java.util.List;
 

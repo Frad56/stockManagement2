@@ -1,15 +1,10 @@
 package com.example.store.Repository.StockManagment;
 
-import com.example.store.Model.StockMangement.Product;
+
+import com.example.store.Model.StockMangement.Shelf;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
-import java.util.Optional;
-
-
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
-
-
+public interface ShelfRepository extends JpaRepository<Shelf, Long> {
 }

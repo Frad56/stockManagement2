@@ -1,11 +1,12 @@
 package com.example.store.Model.StockMangement;
 
 
-import com.example.store.Model.Authentification.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 
 @AllArgsConstructor
@@ -19,11 +20,14 @@ public class Unit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long unitId;
 
-    @Column(name = "name")
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private UnitName name;
 
     @Column(name = "symbol")
     private String symbol;
+
+    @Column(name = "date_of_creation", updatable = false)
+    private LocalDateTime dateOfCreation;
 
     @Enumerated(EnumType.STRING)
     private SizeType sizeType;

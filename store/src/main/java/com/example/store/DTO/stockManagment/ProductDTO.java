@@ -16,7 +16,7 @@ public class ProductDTO {
     private String brand;
     private String description;
     private BigDecimal basePrice;
-    private Long category_id;
+    private Long categoryId;
 
 
 
