@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/product")
@@ -52,15 +53,15 @@ public class ProductController {
 
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProductByID(@PathVariable("id") Long productId){
+    public ResponseEntity<Map<String,String>> deleteProductByID(@PathVariable("id") Long productId){
         productService.deleteProductById(productId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Product> updateProductBuId(@RequestBody ProductDTO productDTO,
-                                                     @PathVariable Long productId){
+                                                     @PathVariable("id") Long productId){
         Product updatedProduct = productService.updateProduct(productDTO,productId);
         return  ResponseEntity.ok(updatedProduct);
     }

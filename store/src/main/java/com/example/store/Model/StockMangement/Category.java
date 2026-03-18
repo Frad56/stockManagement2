@@ -27,12 +27,13 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
-    @OneToMany(mappedBy = "parent",cascade = CascadeType.ALL)
-    private List<Category> children;
+
+//   @OneToMany(mappedBy = "parent",cascade = CascadeType.ALL)
+//    private List<Category> children;
 
 }
 

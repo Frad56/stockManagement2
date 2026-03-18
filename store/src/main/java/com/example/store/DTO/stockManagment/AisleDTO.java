@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class AisleDTO {
-    private Long aisleId;
     private String name;
 }

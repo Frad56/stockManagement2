@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/productCharacteristic")
@@ -19,7 +20,7 @@ public class ProductCharacteristicController {
     }
 
     @PostMapping("/addProductCharacteristic")
-    public ResponseEntity<ProductCharacteristic> saveProductCharacteristic(ProductCharacteristicDTO productCharacteristicDTO) {
+    public ResponseEntity<ProductCharacteristic> saveProductCharacteristic( @RequestBody ProductCharacteristicDTO productCharacteristicDTO) {
         return ResponseEntity.ok(productCharacteristicService.saveProductCharacteristic(productCharacteristicDTO));
     }
 
@@ -30,20 +31,20 @@ public class ProductCharacteristicController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<ProductCharacteristic> findProductCharacteristicById(Long productCharacteristicId) {
+    public ResponseEntity<ProductCharacteristic> findProductCharacteristicById(@PathVariable("id") Long productCharacteristicId) {
         return ResponseEntity.ok(productCharacteristicService.findProductCharacteristicById(productCharacteristicId));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ProductCharacteristic> updateProductCharacteristic(ProductCharacteristicDTO productCharacteristicDTO, Long productCharacteristicId)
+    public ResponseEntity<ProductCharacteristic> updateProductCharacteristic( @RequestBody ProductCharacteristicDTO productCharacteristicDTO,
+                                                                              @PathVariable("id") Long productCharacteristicId)
     {         return ResponseEntity.ok(productCharacteristicService.updateProductCharacteristic(productCharacteristicDTO, productCharacteristicId));
     }
 
-
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProductCharacteristicById(Long productCharacteristicId) {
+    public ResponseEntity<Map<String,String>> deleteProductCharacteristicById(@PathVariable("id") Long productCharacteristicId) {
         productCharacteristicService.deleteProductCharacteristicById(productCharacteristicId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 
 }

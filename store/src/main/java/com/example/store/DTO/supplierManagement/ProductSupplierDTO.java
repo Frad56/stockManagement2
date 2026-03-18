@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ProductSupplierDTO {
-    private Long product_id;
-    private Long supplier_id;
+    private Long productId;
+    private Long supplierId;
     private Double purchasePrice;
 }

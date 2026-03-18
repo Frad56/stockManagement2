@@ -1,6 +1,7 @@
 package com.example.store.Service.stockManagment.interfaces;
 
 import com.example.store.DTO.stockManagment.ShelfDTO;
+import com.example.store.Model.StockMangement.Aisle;
 import com.example.store.Model.StockMangement.Shelf;
 
 import java.util.List;

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/unit")
@@ -18,7 +19,7 @@ public class UnitController {
         this.unitService = unitService;
     }
     @PostMapping("/addUnit")
-    public ResponseEntity<Unit> saveUnit(UnitDTO unitDTO) {
+    public ResponseEntity<Unit> saveUnit(@RequestBody  UnitDTO unitDTO) {
         return ResponseEntity.ok(unitService.saveUnit(unitDTO));
     }
     @GetMapping("/ListUnits")
@@ -26,16 +27,18 @@ public class UnitController {
         return ResponseEntity.ok(unitService.fetchUnitList());
     }
     @GetMapping("/find/{id}")
-    public ResponseEntity<Unit> findUnitById(Long unitId) {
+    public ResponseEntity<Unit> findUnitById(@PathVariable("id") Long unitId) {
         return ResponseEntity.ok(unitService.findUnitById(unitId));
     }
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteUnitById(Long unitId) {
+    public ResponseEntity<Map<String,String>> deleteUnitById(@PathVariable("id") Long unitId) {
         unitService.deleteUnitById(unitId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<Unit> updateUnit(UnitDTO unitDTO, Long unitId) {
+    public ResponseEntity<Unit> updateUnit(@RequestBody  UnitDTO unitDTO,@PathVariable("id") Long unitId) {
         return ResponseEntity.ok(unitService.updateUnit(unitDTO, unitId));
     }
 }

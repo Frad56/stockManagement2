@@ -51,9 +51,9 @@ public class Product {
     @JoinColumn(name="category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
-    @JsonManagedReference
-    private List<ProductSupplier> product_suppliers = new ArrayList<>();
+   // @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
+    //@JsonManagedReference
+    //private List<ProductSupplier> product_suppliers = new ArrayList<>();
 
 
 

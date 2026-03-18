@@ -12,5 +12,6 @@ public interface AisleService {
     Aisle findAisleById(Long idAisle);
     Aisle updateAisle(AisleDTO aisleDTO, Long aisleId);
     void deleteAisleById(Long aisleId);
+    void clearAisle(Long aisleId);
 
 }

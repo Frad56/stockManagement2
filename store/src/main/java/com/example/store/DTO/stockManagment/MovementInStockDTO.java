@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovementInStockDTO {
-    private Long movementInStockId;
+
     private LocalDateTime date;
     private MovementInStockType movementInStockType;
     private BigDecimal quantityInStock;

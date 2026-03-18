@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/movementInStock")
@@ -20,12 +21,12 @@ public class MovementInStockController {
     }
 
     @PostMapping("/addMovementInStock")
-    public ResponseEntity<MovementInStock> saveMovementInStock(MovementInStockDTO movementInStockDTO) {
+    public ResponseEntity<MovementInStock> saveMovementInStock( @RequestBody MovementInStockDTO movementInStockDTO) {
         return ResponseEntity.ok(movementInStockService.saveMovementInStock(movementInStockDTO));
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<MovementInStock> findMovementInStockById(Long movementInStockId) {
+    public ResponseEntity<MovementInStock> findMovementInStockById( @PathVariable("id")  Long movementInStockId) {
         return ResponseEntity.ok(movementInStockService.findMovementInStockById(movementInStockId));
     }
 
@@ -37,14 +38,15 @@ public class MovementInStockController {
 
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<MovementInStock> updateMovementInStock(MovementInStockDTO movementInStockDTO, Long movementInStockId)
+    public ResponseEntity<MovementInStock> updateMovementInStock(@RequestBody MovementInStockDTO movementInStockDTO,
+                                                                 @PathVariable("id") Long movementInStockId)
     {        return ResponseEntity.ok(movementInStockService.updateMovementInStock(movementInStockDTO, movementInStockId));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteMovementInStockById(Long movementInStockId) {
+    public ResponseEntity<Map<String,String>> deleteMovementInStockById(@PathVariable("id")  Long movementInStockId) {
         movementInStockService.deleteMovementInStockById(movementInStockId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 
 }

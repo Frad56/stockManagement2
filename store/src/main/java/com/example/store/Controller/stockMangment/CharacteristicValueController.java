@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/characteristicValue")
@@ -21,12 +22,12 @@ public class CharacteristicValueController {
     }
 
     @PostMapping("/addCharacteristicValue")
-    public ResponseEntity<CharacteristicValue> saveCharacteristicValue(CharacteristicValueDTO characteristicValue) {
+    public ResponseEntity<CharacteristicValue> saveCharacteristicValue( @RequestBody CharacteristicValueDTO characteristicValue) {
         return ResponseEntity.ok(characteristicValueService.saveCharacteristicValue(characteristicValue));
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<CharacteristicValue> findCharacteristicValueById(Long characteristicValueId) {
+    public ResponseEntity<CharacteristicValue> findCharacteristicValueById(@PathVariable("id") Long characteristicValueId) {
         return ResponseEntity.ok(characteristicValueService.findCharacteristicValueById(characteristicValueId));
     }
     @GetMapping("/ListCharacteristicValues")
@@ -35,12 +36,13 @@ public class CharacteristicValueController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<CharacteristicValue> updateCharacteristicValue(CharacteristicValueDTO characteristicValue, Long characteristicValueId) {
+    public ResponseEntity<CharacteristicValue> updateCharacteristicValue(@RequestBody CharacteristicValueDTO characteristicValue,
+                                                                         @PathVariable("id") Long characteristicValueId) {
         return ResponseEntity.ok(characteristicValueService.updateCharacteristicValue(characteristicValue, characteristicValueId));
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCharacteristicValueById(Long characteristicValueId) {
+    public ResponseEntity<Map<String,String>> deleteCharacteristicValueById(@PathVariable("id") Long characteristicValueId) {
         characteristicValueService.deleteCharacteristicValueById(characteristicValueId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 }

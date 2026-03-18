@@ -20,17 +20,17 @@ public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long supplier_id;
+    private Long supplierId;
 
-    @NotNull
-    @Column(name = "companyName")
-    private String company_name;
 
-    @Column(name = "contactName")
-    private String contact_name;
+    @Column(name = "company_name")
+    private String companyName;
 
-    @Column(name = "phoneNumber")
-    private String phone_number;
+    @Column(name = "contact_name")
+    private String contactName;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     @Column(name = "fax")
     private String fax;
@@ -44,13 +44,13 @@ public class Supplier {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "postalCode")
-    private String postal_code;
+    @Column(name = "postal_code")
+    private String postalCode;
 
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<ProductSupplier> product_suppliers = new ArrayList<>();
+//    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<ProductSupplier> product_suppliers = new ArrayList<>();
 }

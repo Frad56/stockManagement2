@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ShelfDTO {
-    private Long shelfId;
+
     private String ShelfNameByAisle;
     private Long aisleId;
 }

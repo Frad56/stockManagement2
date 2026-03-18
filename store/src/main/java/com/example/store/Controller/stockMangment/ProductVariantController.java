@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/productVariant")
@@ -18,7 +19,7 @@ public class ProductVariantController {
     }
 
     @PostMapping("/addProductVariant")
-    public ResponseEntity<ProductVariant> saveProductVariant(ProductVariantDTO productVariantDTO) {
+    public ResponseEntity<ProductVariant> saveProductVariant(@RequestBody  ProductVariantDTO productVariantDTO) {
         return ResponseEntity.ok(productVariantService.saveProductVariant(productVariantDTO));
     }
     @GetMapping("/ListProductVariants")
@@ -27,18 +28,18 @@ public class ProductVariantController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<ProductVariant> findProductVariantById(Long productVariantId) {
+    public ResponseEntity<ProductVariant> findProductVariantById(@PathVariable("id") Long productVariantId) {
         return ResponseEntity.ok(productVariantService.findProductVariantById(productVariantId));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProductVariantById(Long productVariantId) {
+    public ResponseEntity<Map<String,String>> deleteProductVariantById(@PathVariable("id") Long productVariantId) {
         productVariantService.deleteProductVariantById(productVariantId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ProductVariant> updateProductVariant(ProductVariantDTO productVariantDTO, Long productVariantId) {
+    public ResponseEntity<ProductVariant> updateProductVariant(@RequestBody ProductVariantDTO productVariantDTO, @PathVariable("id") Long productVariantId) {
         return ResponseEntity.ok(productVariantService.updateProductVariant(productVariantDTO, productVariantId));
     }
 }

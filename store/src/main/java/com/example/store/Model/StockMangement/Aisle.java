@@ -13,14 +13,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="aisle")
 public class Aisle {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long aisleId;
 
     @Column(name= "name")
     private String name;
-
-
 
 }

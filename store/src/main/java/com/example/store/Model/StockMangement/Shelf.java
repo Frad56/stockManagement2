@@ -23,4 +23,6 @@ public class Shelf {
     @JoinColumn(name = "aisle_id", nullable = false)
     private Aisle aisle;
 
+
+
 }

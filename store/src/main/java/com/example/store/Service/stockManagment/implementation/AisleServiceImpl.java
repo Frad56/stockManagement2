@@ -2,10 +2,14 @@ package com.example.store.Service.stockManagment.implementation;
 
 import com.example.store.DTO.stockManagment.AisleDTO;
 import com.example.store.Model.StockMangement.Aisle;
+import com.example.store.Model.StockMangement.ProductVariant;
+import com.example.store.Model.StockMangement.Shelf;
 import com.example.store.Repository.StockManagment.AisleRepository;
+import com.example.store.Repository.StockManagment.ProductVariantRepository;
 import com.example.store.Service.stockManagment.interfaces.AisleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,10 +18,12 @@ import java.util.List;
 public class AisleServiceImpl implements AisleService {
 
     private final AisleRepository aisleRepository;
-
+    private final ProductVariantRepository productVariantRepository;
     @Autowired
-        public AisleServiceImpl(AisleRepository aisleRepository){
+        public AisleServiceImpl(AisleRepository aisleRepository,
+                                ProductVariantRepository productVariantRepository){
             this.aisleRepository = aisleRepository;
+            this.productVariantRepository=productVariantRepository;
         }
 
 
@@ -56,4 +62,18 @@ public class AisleServiceImpl implements AisleService {
         }
         aisleRepository.deleteById(aisleId);
     }
+
+
+   @Override
+   //transaction sig si il ya un error pour variant N3 ne fait rien
+   @Transactional
+    public void clearAisle(Long aisleId){
+        Aisle aisle = findAisleById(aisleId);
+        List<ProductVariant> variants = productVariantRepository.findByAisle(aisle);
+        for(ProductVariant variant:variants){
+            variant.setAisle(null);
+            productVariantRepository.save(variant);
+        }
+
+   }
 }

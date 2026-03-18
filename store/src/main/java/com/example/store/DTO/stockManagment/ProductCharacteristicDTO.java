@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProductCharacteristicDTO {
 
-    private Long productCharacteristicId;
     private Long productId;
     private Long characteristicId;
 }

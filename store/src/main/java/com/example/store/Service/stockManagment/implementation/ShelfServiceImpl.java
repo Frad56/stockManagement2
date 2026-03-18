@@ -1,6 +1,7 @@
 package com.example.store.Service.stockManagment.implementation;
 
 import com.example.store.DTO.stockManagment.ShelfDTO;
+import com.example.store.Model.StockMangement.Aisle;
 import com.example.store.Model.StockMangement.Shelf;
 import com.example.store.Repository.StockManagment.ShelfRepository;
 import com.example.store.Service.stockManagment.interfaces.AisleService;
@@ -30,8 +31,11 @@ public class ShelfServiceImpl implements ShelfService {
     }
 
     @Override
-    public Shelf saveShelf(ShelfDTO shelf) {
-        return null;
+    public Shelf saveShelf(ShelfDTO shelfDTO) {
+        Shelf shelf = new Shelf();
+        mapShelfDTOToShelf(shelfDTO,shelf);
+
+        return shelfRepository.save(shelf);
     }
 
     @Override
@@ -46,8 +50,11 @@ public class ShelfServiceImpl implements ShelfService {
     }
 
     @Override
-    public Shelf updateShelf(ShelfDTO shelf, Long shelfId) {
-        return null;
+    public Shelf updateShelf(ShelfDTO shelfDTO, Long shelfId) {
+        Shelf shelf = findShelfById(shelfId);
+        mapShelfDTOToShelf(shelfDTO,shelf);
+
+        return shelfRepository.save(shelf);
     }
 
     @Override
@@ -57,4 +64,7 @@ public class ShelfServiceImpl implements ShelfService {
         }
         shelfRepository.deleteById(shelfId);
     }
+
+
+
 }

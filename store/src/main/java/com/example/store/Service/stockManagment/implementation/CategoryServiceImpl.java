@@ -4,12 +4,17 @@ package com.example.store.Service.stockManagment.implementation;
 import com.example.store.DTO.stockManagment.CategoryDTO;
 import com.example.store.Exception.ElementNotFoundException;
 import com.example.store.Model.StockMangement.Category;
+import com.example.store.Model.StockMangement.CharacteristicTypeValue;
 import com.example.store.Repository.StockManagment.CategoryRepository;
 import com.example.store.Service.stockManagment.interfaces.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -21,6 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryServiceImpl(CategoryRepository categoryRepository){
         this.categoryRepository =categoryRepository;
     }
+
 
 
     private void mapDTOToCategory(CategoryDTO categoryDTO, Category category) {
@@ -48,6 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 
+
     @Override
     public void deleteCategoryById(Long categoryId){
         if(!categoryRepository.existsById(categoryId)){
@@ -67,6 +74,62 @@ public class CategoryServiceImpl implements CategoryService {
         Category category =findCategoryById(categoryId);
         mapDTOToCategory(categoryDTO,category);
         return categoryRepository.save(category);
+    }
+
+
+
+    @Override
+    public boolean validateValue(String value, CharacteristicTypeValue typeValue){
+
+        switch (typeValue) {
+            case STRING:
+                return value != null;
+            case DECIMAL:
+                try {
+                    Double.parseDouble(value);
+                    return true;
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+            case INTEGER:
+                try {
+                    Integer.parseInt(value);
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+            case BOOLEAN:
+                return "true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value);
+            case DATE:
+                try{
+                    LocalDate.parse(value);
+                    return true;
+                }catch (DateTimeException e) {
+                    return false;
+                }
+        }
+        return false;
+    }
+
+    @Override
+    public Object convertValue(String value,CharacteristicTypeValue typeValue){
+        switch (typeValue){
+            case STRING :
+                return value;
+            case DECIMAL :
+                return Double.parseDouble(value);
+            case INTEGER:
+                return Integer.parseInt(value);
+            case BOOLEAN:
+                return Boolean.parseBoolean(value);
+            case DATE:
+                return LocalDate.parse(value);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Category> leafCategoryList(){
+        return categoryRepository.findLeafCategories();
     }
 }
 

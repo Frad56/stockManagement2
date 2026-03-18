@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/shelf")
@@ -18,7 +19,7 @@ public class ShelfController {
         this.shelfService = shelfService;
     }
     @PostMapping("/addShelf")
-    public ResponseEntity<Shelf> saveShelf(ShelfDTO shelfDTO) {
+    public ResponseEntity<Shelf> saveShelf(@RequestBody  ShelfDTO shelfDTO) {
         return ResponseEntity.ok(shelfService.saveShelf(shelfDTO));
     }
     @GetMapping("/ListShelves")
@@ -27,17 +28,17 @@ public class ShelfController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Shelf> findShelfById(Long shelfId) {
+    public ResponseEntity<Shelf> findShelfById(@PathVariable("id") Long shelfId) {
         return ResponseEntity.ok(shelfService.findShelfById(shelfId));
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteShelfById(Long shelfId) {
+    public ResponseEntity<Map<String,String>> deleteShelfById(@PathVariable("id") Long shelfId) {
         shelfService.deleteShelfById(shelfId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Shelf> updateShelf(ShelfDTO shelfDTO, Long shelfId) {
+    public ResponseEntity<Shelf> updateShelf(@RequestBody  ShelfDTO shelfDTO,@PathVariable("id") Long shelfId) {
         return ResponseEntity.ok(shelfService.updateShelf(shelfDTO, shelfId));
     }
 

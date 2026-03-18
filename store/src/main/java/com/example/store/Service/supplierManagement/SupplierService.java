@@ -14,4 +14,6 @@ public interface SupplierService {
     List<Supplier> fetchSupplierList();
 
     void deleteSupplierByID(Long supplierId);
+
+     Supplier updateSupplier(SupplierDTO supplierDTO , Long supplierId);
 }

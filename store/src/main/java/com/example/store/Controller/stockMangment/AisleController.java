@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/aisle")
@@ -46,8 +47,8 @@ public class AisleController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteAisleById(@PathVariable("id") Long aisleId) {
+    public ResponseEntity<Map<String,String>> deleteAisleById(@PathVariable("id") Long aisleId) {
         aisleService.deleteAisleById(aisleId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 }

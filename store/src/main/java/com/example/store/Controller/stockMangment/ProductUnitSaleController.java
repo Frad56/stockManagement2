@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/productUnitSale")
@@ -20,7 +21,7 @@ public class ProductUnitSaleController {
     }
 
     @PostMapping("/addProductUnitSale")
-    public ResponseEntity<ProductUnitSale> saveProductUnitSale(ProductUnitSaleDTO productUnitSaleDTO) {
+    public ResponseEntity<ProductUnitSale> saveProductUnitSale(@RequestBody ProductUnitSaleDTO productUnitSaleDTO) {
         return ResponseEntity.ok(productUnitSaleService.saveProductUnitSale(productUnitSaleDTO));
     }
     @GetMapping("/ListProductUnitSale")
@@ -29,19 +30,19 @@ public class ProductUnitSaleController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<ProductUnitSale> findProductUnitSaleById(Long productUnitSaleId
+    public ResponseEntity<ProductUnitSale> findProductUnitSaleById(@PathVariable("id") Long productUnitSaleId
     ) {
         return ResponseEntity.ok(productUnitSaleService.findProductUnitSaleById(productUnitSaleId));
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<ProductUnitSale> updateProductUnitSale(ProductUnitSaleDTO productUnitSale
-                                                                     , Long productUnitSaleId) {
+    public ResponseEntity<ProductUnitSale> updateProductUnitSale(@RequestBody  ProductUnitSaleDTO productUnitSale
+                                                                     , @PathVariable("id") Long productUnitSaleId) {
         return ResponseEntity.ok(productUnitSaleService.updateProductUnitSale(productUnitSale, productUnitSaleId));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProductUnitSaleById(Long productUnitSaleId) {
+    public ResponseEntity<Map<String,String>> deleteProductUnitSaleById(@PathVariable("id") Long productUnitSaleId) {
         productUnitSaleService.deleteProductUnitSaleById(productUnitSaleId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 }

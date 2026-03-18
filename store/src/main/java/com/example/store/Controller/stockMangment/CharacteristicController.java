@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/characteristic")
@@ -20,7 +21,7 @@ public class CharacteristicController {
     }
 
     @PostMapping("/addCharacteristic")
-    public ResponseEntity<Characteristic> saveCharacteristic(CharacteristicDTO characteristicDTO) {
+    public ResponseEntity<Characteristic> saveCharacteristic(@RequestBody CharacteristicDTO characteristicDTO) {
         return ResponseEntity.ok(characteristicService.saveCharacteristic(characteristicDTO));
     }
 
@@ -30,20 +31,21 @@ public class CharacteristicController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Characteristic> findCharacteristicById(Long characteristicId) {
+    public ResponseEntity<Characteristic> findCharacteristicById( @PathVariable("id") Long characteristicId) {
         return ResponseEntity.ok(characteristicService.findCharacteristicById(characteristicId));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Characteristic> updateCharacteristic(CharacteristicDTO characteristicDTO, Long characteristicId)
+    public ResponseEntity<Characteristic> updateCharacteristic(@RequestBody  CharacteristicDTO characteristicDTO,
+                                                               @PathVariable("id") Long characteristicId)
     {
         return ResponseEntity.ok(characteristicService.updateCharacteristic(characteristicDTO, characteristicId));
     }
 
-    @GetMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCharacteristicById(Long characteristicId) {
+    @DeleteMapping ("/delete/{id}")
+    public ResponseEntity<Map<String,String>> deleteCharacteristicById( @PathVariable("id") Long characteristicId) {
         characteristicService.deleteCharacteristicById(characteristicId);
-        return ResponseEntity.ok("Deleted Successfully");
+        return ResponseEntity.ok(Map.of("message","Deleted Successfully"));
     }
 
 }

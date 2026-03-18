@@ -32,13 +32,13 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
     public ProductSupplier saveProductSupplier(ProductSupplierDTO productSupplier) {
         ProductSupplier saveProductSupplier = new ProductSupplier();
 
-        Long product_id = productSupplier.getProduct_id();
+        Long product_id = productSupplier.getProductId();
         Product findProduct = productService.findProductById(product_id);
         if (findProduct != null) {
             saveProductSupplier.setProduct(findProduct);
         }
 
-        Supplier supplier = supplierService.findSupplierById(productSupplier.getSupplier_id());
+        Supplier supplier = supplierService.findSupplierById(productSupplier.getSupplierId());
         saveProductSupplier.setSupplier(supplier);
         saveProductSupplier.setPurchasePrice(productSupplier.getPurchasePrice());
         productSupplierRepository.save(saveProductSupplier);

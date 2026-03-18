@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class UnitDTO {
 
-    private Long unitId;
+
     private UnitName name;
     private String symbol;
     private SizeType sizeType;

@@ -33,6 +33,10 @@ public class CategoryController {
         return ResponseEntity.ok(categories);
     }
 
+    @GetMapping("/leafCategoryList")
+    public ResponseEntity<List<Category>> leafCategoryList(){
+        return ResponseEntity.ok(categoryService.leafCategoryList());
+    }
 
     @GetMapping("/find/{id}")
     public ResponseEntity<Category> findCategoryById(@PathVariable("id") Long categoryId
