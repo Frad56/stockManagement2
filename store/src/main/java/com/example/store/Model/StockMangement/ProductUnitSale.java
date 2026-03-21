@@ -16,18 +16,16 @@ public class ProductUnitSale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ProductUnitSaleId;
+    private Long productUnitSaleId;
 
 
-    @ManyToOne(fetch =FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "product_id",nullable = false)
-    @JsonBackReference
     private Product product;
 
 
-    @ManyToOne(fetch =FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "unit_id",nullable = false)
-    @JsonBackReference
     private Unit unit;
 
     @Column(name = "conversion_factor")
