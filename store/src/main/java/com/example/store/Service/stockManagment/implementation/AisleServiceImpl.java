@@ -2,9 +2,11 @@ package com.example.store.Service.stockManagment.implementation;
 
 import com.example.store.DTO.stockManagment.AisleDTO;
 import com.example.store.Model.StockMangement.Aisle;
+import com.example.store.Model.StockMangement.Product;
 import com.example.store.Model.StockMangement.ProductVariant;
 import com.example.store.Model.StockMangement.Shelf;
 import com.example.store.Repository.StockManagment.AisleRepository;
+import com.example.store.Repository.StockManagment.ProductRepository;
 import com.example.store.Repository.StockManagment.ProductVariantRepository;
 import com.example.store.Service.stockManagment.interfaces.AisleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,12 @@ import java.util.List;
 public class AisleServiceImpl implements AisleService {
 
     private final AisleRepository aisleRepository;
-    private final ProductVariantRepository productVariantRepository;
+    private final ProductRepository productRepository;
     @Autowired
         public AisleServiceImpl(AisleRepository aisleRepository,
-                                ProductVariantRepository productVariantRepository){
+                                ProductRepository productRepository){
             this.aisleRepository = aisleRepository;
-            this.productVariantRepository=productVariantRepository;
+            this.productRepository=productRepository;
         }
 
 
@@ -69,10 +71,10 @@ public class AisleServiceImpl implements AisleService {
    @Transactional
     public void clearAisle(Long aisleId){
         Aisle aisle = findAisleById(aisleId);
-        List<ProductVariant> variants = productVariantRepository.findByAisle(aisle);
-        for(ProductVariant variant:variants){
+        List<Product> products = productRepository.findByAisle(aisle);
+        for(Product variant:products){
             variant.setAisle(null);
-            productVariantRepository.save(variant);
+            productRepository.save(variant);
         }
 
    }

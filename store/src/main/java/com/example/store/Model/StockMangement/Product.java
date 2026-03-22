@@ -51,6 +51,10 @@ public class Product {
     @JoinColumn(name="category_id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name="aisle_id")
+    private Aisle aisle;
+
    // @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
     //@JsonManagedReference
     //private List<ProductSupplier> product_suppliers = new ArrayList<>();

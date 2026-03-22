@@ -19,14 +19,12 @@ public class CharacteristicValue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long characteristicValueId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "product_characteristic_id",nullable = false)
-    @JsonBackReference
     private ProductCharacteristic productCharacteristic;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "product_variant_id",nullable = false)
-    @JsonBackReference
     private ProductVariant productVariant;
 
     @Column(name ="value")

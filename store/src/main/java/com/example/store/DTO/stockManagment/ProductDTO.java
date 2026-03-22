@@ -17,6 +17,7 @@ public class ProductDTO {
     private String description;
     private BigDecimal basePrice;
     private Long categoryId;
+    private Long aisleId;
 
 
 

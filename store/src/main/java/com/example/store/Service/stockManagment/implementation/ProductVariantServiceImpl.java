@@ -20,15 +20,13 @@ public class ProductVariantServiceImpl implements ProductVariantService {
 
     private final ProductVariantRepository productVariantRepository;
     private final ProductService productService;
-    private final AisleService aisleService;
+
 
 
     @Autowired
      public ProductVariantServiceImpl(ProductVariantRepository productVariantRepository,
-                                      AisleService aisleService,
                                       ProductService productService){
          this.productVariantRepository = productVariantRepository;
-         this.aisleService = aisleService;
          this.productService = productService;
      }
 
@@ -39,7 +37,7 @@ public class ProductVariantServiceImpl implements ProductVariantService {
         variant.setSpecificPrice(dto.getSpecificPrice());
         variant.setQuantityInStock(dto.getQuantityInStock());
         variant.setProduct(productService.findProductById(dto.getProductId()));
-        variant.setAisle(aisleService.findAisleById(dto.getAisleId()));
+
     }
     @Override
     public ProductVariant saveProductVariant(ProductVariantDTO productVariantDTO) {

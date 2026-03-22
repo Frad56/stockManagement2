@@ -3,9 +3,11 @@ package com.example.store.Service.stockManagment.implementation;
 
 import com.example.store.DTO.stockManagment.ProductDTO;
 import com.example.store.Exception.ElementNotFoundException;
+import com.example.store.Model.StockMangement.Aisle;
 import com.example.store.Model.StockMangement.Category;
 import com.example.store.Model.StockMangement.Product;
 import com.example.store.Repository.StockManagment.ProductRepository;
+import com.example.store.Service.stockManagment.interfaces.AisleService;
 import com.example.store.Service.stockManagment.interfaces.CategoryService;
 import com.example.store.Service.stockManagment.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +22,16 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     private final CategoryService categoryService;
+    private  final AisleService aisleService;
 
 
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository,CategoryService categoryService){
+    public ProductServiceImpl(ProductRepository productRepository,CategoryService categoryService,
+                              AisleService aisleService){
         this.productRepository=productRepository;
         this.categoryService=categoryService;
+        this.aisleService=aisleService;
 
     }
 
@@ -38,7 +43,9 @@ public class ProductServiceImpl implements ProductService {
         product.setBasePrice(dto.getBasePrice());
 
         Category category =categoryService.findCategoryById(dto.getCategoryId());
+        Aisle aisle = aisleService.findAisleById(dto.getAisleId());
         product.setCategory(category);
+        product.setAisle(aisle);
 
     }
 
